@@ -1,0 +1,171 @@
+<div class="signup-page-container">
+  <div class="signup-glass-card glass-panel">
+    
+    <!-- HEADER -->
+    <div class="signup-header text-center">
+      <a routerLink="/" class="auth-logo">
+        <div class="logo-mark">
+          <svg width="26" height="32" viewBox="0 0 26 32" fill="none">
+            <line x1="13" y1="16" x2="13" y2="30" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" />
+            <circle cx="13" cy="11" r="9" fill="url(#signupLogoGlow)" stroke="#ffffff" stroke-width="2" />
+            <circle cx="13" cy="11" r="3.5" fill="#ffffff" />
+            <defs>
+              <linearGradient id="signupLogoGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#38bdf8" />
+                <stop offset="100%" stop-color="#0284c7" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Meet<span class="accent">Map</span></span>
+      </a>
+      <h2>Create Your Account</h2>
+      <p>Step {{ step() }} of 3 — Join the next-generation location event network.</p>
+      
+      <!-- Step Indicator Bar -->
+      <div class="step-bar">
+        <div class="step-dot" [class.active]="step() >= 1">1</div>
+        <div class="step-line" [class.active]="step() >= 2"></div>
+        <div class="step-dot" [class.active]="step() >= 2">2</div>
+        <div class="step-line" [class.active]="step() >= 3"></div>
+        <div class="step-dot" [class.active]="step() >= 3">3</div>
+      </div>
+    </div>
+
+    <!-- STEP 1: PERSONA SELECTOR -->
+    @if (step() === 1) {
+      <div class="step-content">
+        <h3 class="step-title">Select Your Primary Account Type</h3>
+        <div class="persona-options-grid">
+          
+          <div 
+            class="persona-card glass-card"
+            [class.selected]="selectedRole() === 'guest'"
+            (click)="selectedRole.set('guest')"
+          >
+            <h4>I'm an Event Guest</h4>
+            <p>Discover local happenings, receive instant location alerts, and get digital member passes.</p>
+            <span class="check-mark">{{ selectedRole() === 'guest' ? '✓ Selected' : 'Select Guest' }}</span>
+          </div>
+
+          <div 
+            class="persona-card glass-card"
+            [class.selected]="selectedRole() === 'host'"
+            (click)="selectedRole.set('host')"
+          >
+            <h4>I'm an Event Host</h4>
+            <p>List venues, publish ticketed events, manage RSVPs, and monetize community subscribers.</p>
+            <span class="check-mark">{{ selectedRole() === 'host' ? '✓ Selected' : 'Select Host' }}</span>
+          </div>
+
+        </div>
+
+        <button class="btn-primary w-full mt-6" (click)="goToStep(2)">
+          Continue to Profile Details
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    }
+
+    <!-- STEP 2: PROFILE & INTERESTS -->
+    @if (step() === 2) {
+      <div class="step-content">
+        <h3 class="step-title">Tell Us About Yourself</h3>
+        <form (ngSubmit)="goToStep(3)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-input" [(ngModel)]="name" name="name" placeholder="Jordan Vance" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-input" [(ngModel)]="email" name="email" placeholder="jordan@example.com" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-input" [(ngModel)]="password" name="password" placeholder="••••••••••••" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Primary City</label>
+              <select class="form-select" [(ngModel)]="city" name="city">
+                <option value="San Francisco, CA">San Francisco, CA</option>
+                <option value="New York, NY">New York, NY</option>
+                <option value="Austin, TX">Austin, TX</option>
+                <option value="Paris, France">Paris, France</option>
+                <option value="Tokyo, Japan">Tokyo, Japan</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-actions-row">
+            <button type="button" class="btn-secondary" (click)="goToStep(1)">Back</button>
+            <button type="submit" class="btn-primary flex-1">Choose Subscription Plan</button>
+          </div>
+        </form>
+      </div>
+    }
+
+    <!-- STEP 3: PLAN TIER SELECTION -->
+    @if (step() === 3) {
+      <div class="step-content">
+        <h3 class="step-title">Select Initial Membership Tier</h3>
+        
+        <div class="plan-options-list">
+          @if (selectedRole() === 'guest') {
+            <div class="plan-row-card glass-card" [class.selected]="selectedPlan() === 'Free Member'" (click)="selectedPlan.set('Free Member')">
+              <div class="plan-radio">{{ selectedPlan() === 'Free Member' ? '●' : '○' }}</div>
+              <div class="plan-info">
+                <strong>Free Member Pass</strong>
+                <span>$0/mo • Public RSVPs & Map Discovery</span>
+              </div>
+            </div>
+            <div class="plan-row-card glass-card" [class.selected]="selectedPlan() === 'VIP Pass'" (click)="selectedPlan.set('VIP Pass')">
+              <div class="plan-radio">{{ selectedPlan() === 'VIP Pass' ? '●' : '○' }}</div>
+              <div class="plan-info">
+                <strong>VIP Member Pass</strong>
+                <span>$12/mo • 24h Priority Drops & Zero Fees</span>
+              </div>
+            </div>
+          } @else {
+            <div class="plan-row-card glass-card" [class.selected]="selectedPlan() === 'Starter Host'" (click)="selectedPlan.set('Starter Host')">
+              <div class="plan-radio">{{ selectedPlan() === 'Starter Host' ? '●' : '○' }}</div>
+              <div class="plan-info">
+                <strong>Starter Host Plan</strong>
+                <span>$29/mo • 14-Day Free Trial (Up to 5 events)</span>
+              </div>
+            </div>
+            <div class="plan-row-card glass-card" [class.selected]="selectedPlan() === 'Pro Host'" (click)="selectedPlan.set('Pro Host')">
+              <div class="plan-radio">{{ selectedPlan() === 'Pro Host' ? '●' : '○' }}</div>
+              <div class="plan-info">
+                <strong>Pro Organizer Plan</strong>
+                <span>$79/mo • Unlimited Events & Glass Ticketing</span>
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="form-actions-row mt-6">
+          <button type="button" class="btn-secondary" (click)="goToStep(2)">Back</button>
+          <button 
+            type="button" 
+            class="btn-primary flex-1"
+            [class.btn-host]="selectedRole() === 'host'"
+            (click)="completeRegistration()"
+          >
+            Complete Account Creation
+          </button>
+        </div>
+      </div>
+    }
+
+    <div class="signup-footer text-center">
+      <p>Already registered? <a routerLink="/signin" class="signin-link">Sign In</a></p>
+    </div>
+
+  </div>
+</div>

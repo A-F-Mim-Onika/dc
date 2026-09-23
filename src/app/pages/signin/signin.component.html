@@ -1,0 +1,94 @@
+<div class="auth-page-container">
+  <div class="auth-glass-card glass-panel">
+    
+    <div class="auth-header text-center">
+      <a routerLink="/" class="auth-logo">
+        <div class="logo-mark">
+          <svg width="26" height="32" viewBox="0 0 26 32" fill="none">
+            <line x1="13" y1="16" x2="13" y2="30" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" />
+            <circle cx="13" cy="11" r="9" fill="url(#signinLogoGlow)" stroke="#ffffff" stroke-width="2" />
+            <circle cx="13" cy="11" r="3.5" fill="#ffffff" />
+            <defs>
+              <linearGradient id="signinLogoGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#38bdf8" />
+                <stop offset="100%" stop-color="#0284c7" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Meet<span class="accent">Map</span></span>
+      </a>
+      <h2>Welcome Back</h2>
+      <p>Sign in to manage your RSVPs, view member passes, or launch your next event.</p>
+    </div>
+
+    <!-- Role Selector Toggle -->
+    <div class="role-selector-bar glass-card">
+      <button 
+        class="role-btn btn-guest-role" 
+        [class.active]="selectedRole() === 'guest'"
+        (click)="selectedRole.set('guest')"
+      >
+        Sign In as Guest
+      </button>
+      <button 
+        class="role-btn btn-host-role" 
+        [class.active]="selectedRole() === 'host'"
+        (click)="selectedRole.set('host')"
+      >
+        Sign In as Host
+      </button>
+    </div>
+
+
+
+    <form (ngSubmit)="onLogin()" class="auth-form">
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input 
+          type="email" 
+          class="form-input" 
+          [(ngModel)]="email" 
+          name="email" 
+          placeholder="name@example.com" 
+          required 
+        />
+      </div>
+
+      <div class="form-group">
+        <div class="label-row">
+          <label class="form-label">Password</label>
+          <a class="forgot-link" (click)="forgotPassword()">Forgot Password?</a>
+        </div>
+        <input 
+          type="password" 
+          class="form-input" 
+          [(ngModel)]="password" 
+          name="password" 
+          placeholder="••••••••••••" 
+          required 
+        />
+      </div>
+
+      <div class="remember-row">
+        <label class="checkbox-label">
+          <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe" />
+          <span>Remember this device</span>
+        </label>
+      </div>
+
+      <button 
+        type="submit" 
+        class="btn-primary w-full mt-4"
+        [class.btn-host]="selectedRole() === 'host'"
+      >
+        Sign In to {{ selectedRole() === 'guest' ? 'Guest Dashboard' : 'Host Portal' }}
+      </button>
+    </form>
+
+    <div class="auth-footer text-center">
+      <p>Don't have an account yet? <a routerLink="/signup" class="signup-link">Create an Account</a></p>
+    </div>
+
+  </div>
+</div>

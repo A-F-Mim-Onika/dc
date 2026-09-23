@@ -1,0 +1,103 @@
+<div class="guest-form-card">
+  <div class="form-header">
+    <span class="guest-pill">🎟️ GUEST / MEMBER DISCOVERY</span>
+    <h3>Join as an Event Discoverer</h3>
+    <p>Get early RSVP passes, location alerts, and member discounts for top events in your city.</p>
+  </div>
+
+  @if (!submitted()) {
+    <form (ngSubmit)="onSubmit()" class="form-body">
+      <!-- Category Chips Selector -->
+      <div class="form-group">
+        <label class="form-label">Select Event Interests</label>
+        <div class="category-chips">
+          @for (cat of categories; track cat) {
+            <button 
+              type="button" 
+              class="chip" 
+              [class.active]="selectedCategories.includes(cat)"
+              (click)="toggleCategory(cat)"
+            >
+              {{ cat }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input 
+            type="text" 
+            class="form-input" 
+            [(ngModel)]="name" 
+            name="name" 
+            placeholder="Alex Morgan" 
+            required 
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input 
+            type="email" 
+            class="form-input" 
+            [(ngModel)]="email" 
+            name="email" 
+            placeholder="alex@example.com" 
+            required 
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Primary City</label>
+          <select class="form-select" [(ngModel)]="city" name="city">
+            <option value="San Francisco, CA">San Francisco, CA</option>
+            <option value="New York, NY">New York, NY</option>
+            <option value="Austin, TX">Austin, TX</option>
+            <option value="Paris, France">Paris, France</option>
+            <option value="Tokyo, Japan">Tokyo, Japan</option>
+            <option value="Miami, FL">Miami, FL</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Alert Frequency</label>
+          <select class="form-select" [(ngModel)]="frequency" name="frequency">
+            <option value="Weekly Digest">Weekly Curated Digest</option>
+            <option value="Instant Drops">Instant High-Priority Drops</option>
+            <option value="Weekend Special">Weekend Highlights Only</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-primary btn-guest w-full mt-2">
+        Submit Guest Interest & Get Early Pass
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </form>
+  } @else {
+    <!-- Submitted Ticket Pass Preview -->
+    <div class="ticket-pass-card animate-float">
+      <div class="pass-header">
+        <span class="pass-title">MEMBER DISCOVERY PASS</span>
+        <span class="pass-id">#MM-2026-{{ passNumber }}</span>
+      </div>
+      <div class="pass-body">
+        <h4>{{ name }}</h4>
+        <p>{{ email }} • {{ city }}</p>
+        <div class="pass-tags">
+          @for (c of selectedCategories; track c) {
+            <span class="pass-tag">{{ c }}</span>
+          }
+        </div>
+      </div>
+      <div class="pass-footer">
+        <span class="status-badge">✓ Active Member Priority</span>
+        <button class="btn-secondary btn-reset" (click)="resetForm()">Register Another Guest</button>
+      </div>
+    </div>
+  }
+</div>

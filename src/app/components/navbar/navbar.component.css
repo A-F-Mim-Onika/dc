@@ -1,0 +1,196 @@
+.navbar-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 100%;
+  padding: 16px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  border: none;
+  backdrop-filter: none;
+}
+
+/* Brand Logo (Left Side) */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-mark {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  width: auto;
+  height: auto;
+  filter: drop-shadow(0 4px 14px rgba(56, 189, 248, 0.55));
+}
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+}
+
+.brand-name .accent {
+  color: #38bdf8;
+}
+
+/* Right Side Group (Pricing, Sign In, Sign Up - Rounded Border Tabs) */
+.right-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-tab {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.825rem;
+  color: #ffffff;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+  transition: all var(--transition-fast);
+}
+
+.nav-tab:hover, .nav-tab.active {
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.65);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.28) 0%, rgba(255, 255, 255, 0.14) 100%);
+  box-shadow: 0 6px 22px rgba(56, 189, 248, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+}
+
+/* Standout Filled CTA Button for Join as a Guest (Sky Blue Gradient) */
+.btn-join-cta {
+  text-decoration: none !important;
+  font-weight: 600;
+  font-size: 0.825rem;
+  color: #0f172a !important;
+  padding: 6px 18px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+  border: none;
+  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.4);
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-join-cta:hover, .btn-join-cta:focus, .btn-join-cta:active {
+  text-decoration: none !important;
+  color: #0f172a !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(56, 189, 248, 0.6);
+  filter: brightness(1.08);
+}
+
+/* Standout Filled CTA Button for Become a Host (Amber Gold / Coral Gradient) */
+.btn-host-cta {
+  text-decoration: none !important;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.825rem;
+  color: #0f172a !important;
+  padding: 6px 18px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  border: none;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.4);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-host-cta:hover, .btn-host-cta:focus, .btn-host-cta:active {
+  text-decoration: none !important;
+  color: #0f172a !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(245, 158, 11, 0.6);
+  filter: brightness(1.08);
+}
+
+/* Mobile Toggle */
+.mobile-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 6px;
+}
+
+/* Mobile Drawer */
+.mobile-drawer {
+  position: absolute;
+  top: 60px;
+  left: 16px;
+  right: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow-lg);
+  background: rgba(18, 29, 39, 0.96);
+  border: var(--glass-border-light);
+}
+
+.mobile-drawer a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.drawer-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin: 6px 0;
+}
+
+.drawer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+@media (max-width: 868px) {
+  .right-nav-group {
+    display: none;
+  }
+  .mobile-toggle {
+    display: block;
+  }
+}

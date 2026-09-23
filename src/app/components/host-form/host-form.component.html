@@ -1,0 +1,92 @@
+<div class="host-form-card">
+  <div class="form-header">
+    <span class="host-pill">⚡ HOST / ORGANIZER PORTAL</span>
+    <h3>Create & Publish Events</h3>
+    <p>List your venues, manage ticketers, and reach thousands of local members with zero platform friction.</p>
+  </div>
+
+  @if (!submitted()) {
+    <form (ngSubmit)="onSubmit()" class="form-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Organizer / Brand Name</label>
+          <input 
+            type="text" 
+            class="form-input" 
+            [(ngModel)]="brandName" 
+            name="brandName" 
+            placeholder="Apex Productions" 
+            required 
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Contact Email</label>
+          <input 
+            type="email" 
+            class="form-input" 
+            [(ngModel)]="email" 
+            name="email" 
+            placeholder="host@apex.com" 
+            required 
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Host Organization Type</label>
+          <select class="form-select" [(ngModel)]="hostType" name="hostType">
+            <option value="Independent Creator">Independent Creator / Influencer</option>
+            <option value="Venue Partner">Venue Manager / Club</option>
+            <option value="Community & DAO">Community / Tech DAO</option>
+            <option value="Corporate Series">Corporate Event Lead</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Expected Attendee Size</label>
+          <select class="form-select" [(ngModel)]="capacity" name="capacity">
+            <option value="Under 50 Guests">Under 50 Guests (Intimate)</option>
+            <option value="50 - 250 Guests">50 - 250 Guests (Mid-Scale)</option>
+            <option value="250 - 1,000 Guests">250 - 1,000 Guests (Large)</option>
+            <option value="1,000+ Guests">1,000+ Guests (Festival/Summit)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Event Concept / Vision (Optional)</label>
+        <textarea 
+          class="form-textarea" 
+          rows="2" 
+          [(ngModel)]="concept" 
+          name="concept" 
+          placeholder="e.g. Monthly rooftop networking with live jazz and founder pitches..."
+        ></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary btn-host w-full mt-2">
+        Submit Host Application & Unlock Early Access
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </form>
+  } @else {
+    <!-- Host Access Unlocked Card -->
+    <div class="host-success-card animate-float">
+      <div class="badge-unlocked">
+        <span class="icon">✨</span>
+        <h4>VERIFIED HOST EARLY ACCESS UNLOCKED</h4>
+      </div>
+      <p class="desc">Congratulations <strong>{{ brandName }}</strong>! Your host profile setup is ready.</p>
+      <div class="perks-list">
+        <div class="perk-item">✓ 14-Day Free Trial of Pro Host Tier</div>
+        <div class="perk-item">✓ Instant Location Radar Map Listing</div>
+        <div class="perk-item">✓ Zero Ticket Commission on first 3 events</div>
+      </div>
+      <div class="card-action">
+        <button class="btn-secondary btn-reset" (click)="resetForm()">Submit Another Host Profile</button>
+      </div>
+    </div>
+  }
+</div>

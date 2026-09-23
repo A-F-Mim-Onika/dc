@@ -1,0 +1,142 @@
+<div class="pricing-page-wrapper">
+  
+  <!-- HEADER -->
+  <div class="pricing-header text-center">
+    <span class="glass-badge">💎 TRANSPARENT SUBSCRIPTIONS</span>
+    <h1>Simple Pricing for Members & Organizers</h1>
+    <p>Choose the plan that fits your event journey. Upgrade or downgrade anytime with zero lock-in.</p>
+
+    <!-- Monthly / Annual Toggle -->
+    <div class="billing-toggle glass-card">
+      <span [class.active]="!annualBilling()" (click)="annualBilling.set(false)">Monthly Billing</span>
+      <div class="toggle-switch" (click)="toggleBilling()">
+        <div class="switch-handle" [class.on]="annualBilling()"></div>
+      </div>
+      <span [class.active]="annualBilling()" (click)="annualBilling.set(true)">
+        Annual Billing <span class="discount-pill">SAVE 20%</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- MEMBER TIERS -->
+  <div class="pricing-section-title">
+    <span>🎟️ MEMBER & GUEST PLANS</span>
+  </div>
+
+  <div class="pricing-grid">
+    <!-- Free Pass -->
+    <div class="pricing-card glass-panel">
+      <div class="card-header">
+        <h3>Free Member Pass</h3>
+        <p>For casual event seekers discovering local happenings.</p>
+        <div class="price-box">
+          <span class="currency">$</span>
+          <span class="amount">0</span>
+          <span class="period">/ month</span>
+        </div>
+      </div>
+      <ul class="feature-list">
+        <li>✓ Unlimited Topographic Map Discovery</li>
+        <li>✓ Weekly Curated City Event Drops</li>
+        <li>✓ Standard Digital QR Passes</li>
+        <li>✓ Public Event RSVPs</li>
+      </ul>
+      <a routerLink="/signup" class="btn-secondary w-full">Join as Free Member</a>
+    </div>
+
+    <!-- VIP Pass -->
+    <div class="pricing-card glass-panel popular">
+      <div class="popular-ribbon">MOST POPULAR GUEST TIER</div>
+      <div class="card-header">
+        <h3>VIP Member Pass</h3>
+        <p>For active event enthusiasts and networking leaders.</p>
+        <div class="price-box">
+          <span class="currency">$</span>
+          <span class="amount">{{ annualBilling() ? '9' : '12' }}</span>
+          <span class="period">/ month</span>
+        </div>
+      </div>
+      <ul class="feature-list">
+        <li>✓ <strong>Everything in Free, plus:</strong></li>
+        <li>✓ 24-Hour Early Priority RSVP Access</li>
+        <li>✓ Zero Booking Service Fees</li>
+        <li>✓ Access to Exclusive VIP-Only Secret Mixers</li>
+        <li>✓ Priority Mobile Wallet Passes</li>
+      </ul>
+      <a routerLink="/signup" class="btn-primary btn-guest w-full">Claim VIP Member Pass</a>
+    </div>
+  </div>
+
+  <!-- HOST TIERS -->
+  <div class="pricing-section-title mt-10">
+    <span>⚡ HOST & ORGANIZER PLANS</span>
+  </div>
+
+  <div class="pricing-grid grid-3">
+    <!-- Starter Host -->
+    <div class="pricing-card glass-panel">
+      <div class="card-header">
+        <h3>Starter Host</h3>
+        <p>Great for independent creators hosting occasional meetups.</p>
+        <div class="price-box">
+          <span class="currency">$</span>
+          <span class="amount">{{ annualBilling() ? '24' : '29' }}</span>
+          <span class="period">/ month</span>
+        </div>
+      </div>
+      <ul class="feature-list">
+        <li>✓ Up to 5 Active Events / Month</li>
+        <li>✓ 250 Attendees per event</li>
+        <li>✓ Verified Location Radar Pin</li>
+        <li>✓ Standard Email Reminders</li>
+        <li>✓ 0% Platform Fee on first 3 events</li>
+      </ul>
+      <a routerLink="/signup" class="btn-secondary w-full">Start Free 14-Day Trial</a>
+    </div>
+
+    <!-- Pro Host -->
+    <div class="pricing-card glass-panel popular-host">
+      <div class="popular-ribbon host-ribbon">RECOMMENDED FOR VENUES</div>
+      <div class="card-header">
+        <h3>Pro Organizer</h3>
+        <p>For venues, clubs, and regular community event leads.</p>
+        <div class="price-box">
+          <span class="currency">$</span>
+          <span class="amount">{{ annualBilling() ? '64' : '79' }}</span>
+          <span class="period">/ month</span>
+        </div>
+      </div>
+      <ul class="feature-list">
+        <li>✓ <strong>Unlimited Active Events</strong></li>
+        <li>✓ Up to 2,000 Attendees per event</li>
+        <li>✓ Custom Branded Glass Ticketing</li>
+        <li>✓ Automated SMS & Email Reminders</li>
+        <li>✓ Subscriber Membership Monetization</li>
+        <li>✓ Detailed Analytics Dashboard</li>
+      </ul>
+      <a routerLink="/signup" class="btn-primary btn-host w-full">Get Pro Host Access</a>
+    </div>
+
+    <!-- Enterprise -->
+    <div class="pricing-card glass-panel">
+      <div class="card-header">
+        <h3>Enterprise Venue</h3>
+        <p>For multi-location venue operators & large festivals.</p>
+        <div class="price-box">
+          <span class="currency">$</span>
+          <span class="amount">{{ annualBilling() ? '159' : '199' }}</span>
+          <span class="period">/ month</span>
+        </div>
+      </div>
+      <ul class="feature-list">
+        <li>✓ Unlimited Attendees & Multi-Venues</li>
+        <li>✓ Custom Domain & White-Label Ticketing</li>
+        <li>✓ Dedicated Account Manager</li>
+        <li>✓ High-Throughput Door Scanning API</li>
+        <li>✓ Custom SLA & Contract Billing</li>
+      </ul>
+      <button class="btn-secondary w-full" (click)="contactSales()">Contact Enterprise Sales</button>
+    </div>
+  </div>
+
+</div>

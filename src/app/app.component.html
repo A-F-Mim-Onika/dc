@@ -1,0 +1,25 @@
+<div class="app-layout">
+  <!-- Top Navigation Bar -->
+  <app-navbar></app-navbar>
+
+  <!-- Active Page Route Outlet -->
+  <router-outlet></router-outlet>
+
+  <!-- Global Toast Alerts Container -->
+  <div class="toast-stack">
+    @for (toast of eventService.toasts(); track toast.id) {
+      <div class="toast-item glass-panel" [class]="toast.type">
+        <div class="toast-icon">
+          @if (toast.type === 'success') { ✓ }
+          @else if (toast.type === 'warning') { ⚠️ }
+          @else { ℹ️ }
+        </div>
+        <div class="toast-body">
+          <strong>{{ toast.title }}</strong>
+          <p>{{ toast.message }}</p>
+        </div>
+        <button class="toast-close" (click)="eventService.removeToast(toast.id)">✕</button>
+      </div>
+    }
+  </div>
+</div>

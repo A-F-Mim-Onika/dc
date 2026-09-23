@@ -1,0 +1,342 @@
+<div class="map-container">
+  <!-- Fullscreen Washington D.C. Digital Map SVG -->
+  <svg class="digital-map-svg" viewBox="-550 -150 1800 1200" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <!-- Water Gradient - Deep Dark Potomac & Anacostia Waters -->
+      <linearGradient id="waterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#0a131b" />
+        <stop offset="100%" stop-color="#0e1f2b" />
+      </linearGradient>
+
+      <!-- Forest Park Green Pattern - Rock Creek & National Mall -->
+      <linearGradient id="parkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#122a27" />
+        <stop offset="100%" stop-color="#183a35" />
+      </linearGradient>
+
+      <!-- Red / Coral Orange Gradient -->
+      <linearGradient id="redOrangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ff5252" />
+        <stop offset="50%" stop-color="#ff6b5b" />
+        <stop offset="100%" stop-color="#f97316" />
+      </linearGradient>
+
+      <!-- Electric Emerald Green Gradient -->
+      <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#34d399" />
+        <stop offset="50%" stop-color="#2dd4bf" />
+        <stop offset="100%" stop-color="#10b981" />
+      </linearGradient>
+
+      <!-- Highway Glowing Amber Gold Gradient -->
+      <linearGradient id="highwayGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#fbbf24" />
+        <stop offset="100%" stop-color="#f59e0b" />
+      </linearGradient>
+
+      <!-- Blue GPS Route Gradient -->
+      <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#0284c7" />
+        <stop offset="100%" stop-color="#38bdf8" />
+      </linearGradient>
+
+      <!-- Drop Shadow for Map Elements -->
+      <filter id="mapShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="rgba(0,0,0,0.6)" />
+      </filter>
+
+      <!-- Soft Radial Fog Atmosphere -->
+      <radialGradient id="mistFogGlow" cx="48%" cy="45%" r="65%">
+        <stop offset="0%" stop-color="rgba(56, 189, 248, 0.07)" />
+        <stop offset="35%" stop-color="rgba(245, 158, 11, 0.05)" />
+        <stop offset="100%" stop-color="rgba(10, 17, 23, 0.45)" />
+      </radialGradient>
+
+      <!-- Monochromatic Left-to-Right Fade Gradient Overlay (Shifted Left for Full Map Clarity on Right) -->
+      <linearGradient id="leftToRightFade" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0f1821" stop-opacity="0.98" />
+        <stop offset="15%" stop-color="#0f1821" stop-opacity="0.85" />
+        <stop offset="30%" stop-color="#0f1821" stop-opacity="0.4" />
+        <stop offset="45%" stop-color="#0f1821" stop-opacity="0.05" />
+        <stop offset="60%" stop-color="#0f1821" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+
+    <!-- 1. LAND BASE CANVAS (EXTENDED FAR BEYOND LEFT EDGE) -->
+    <rect x="-1200" y="-300" width="3200" height="1500" fill="#101c27" />
+
+    <!-- 2. VIRGINIA LANDMASS (SOUTHWEST OF POTOMAC RIVER, EXTENDED OFF-SCREEN TO LEFT) -->
+    <path d="M-1200,-100 L180,320 L220,480 L280,620 L350,750 L480,1200 L-1200,1200 Z" fill="#0d1721" opacity="0.85" />
+
+    <!-- 3. D.C. URBAN BLOCK POLYGONS (EXTENDED ACROSS ENTIRE LEFT CANVAS) -->
+    <g fill="#172836" opacity="0.65">
+      <!-- Far Left Extension Blocks (Clean background behind left messaging) -->
+      <rect x="-1100" y="-120" width="180" height="140" rx="6" />
+      <rect x="-880" y="-130" width="200" height="150" rx="6" />
+      <rect x="-650" y="-140" width="200" height="150" rx="6" />
+      <rect x="-420" y="-130" width="180" height="140" rx="6" />
+      <rect x="-200" y="-140" width="190" height="140" rx="6" />
+
+      <rect x="-1050" y="100" width="170" height="120" rx="6" />
+      <rect x="-840" y="90" width="180" height="120" rx="6" />
+      <rect x="-620" y="80" width="180" height="130" rx="6" />
+      <rect x="-400" y="80" width="170" height="120" rx="6" />
+      <rect x="-180" y="70" width="170" height="120" rx="6" />
+
+      <rect x="-1080" y="260" width="180" height="130" rx="6" />
+      <rect x="-860" y="250" width="190" height="130" rx="6" />
+      <rect x="-630" y="240" width="190" height="130" rx="6" />
+      <rect x="-410" y="230" width="180" height="120" rx="6" />
+
+      <rect x="-1040" y="420" width="180" height="130" rx="6" />
+      <rect x="-820" y="410" width="190" height="130" rx="6" />
+      <rect x="-600" y="400" width="190" height="130" rx="6" />
+      <rect x="-380" y="390" width="180" height="120" rx="6" />
+
+      <!-- Northwest D.C. Blocks -->
+      <rect x="220" y="80" width="140" height="110" rx="6" />
+      <rect x="380" y="60" width="160" height="120" rx="6" />
+      <rect x="560" y="50" width="180" height="130" rx="6" />
+      <rect x="760" y="70" width="160" height="110" rx="6" />
+      <rect x="960" y="-80" width="190" height="130" rx="6" />
+      <rect x="1180" y="-90" width="220" height="140" rx="6" />
+
+      <rect x="260" y="210" width="120" height="100" rx="6" />
+      <rect x="400" y="200" width="140" height="110" rx="6" />
+      <rect x="560" y="200" width="160" height="110" rx="6" />
+      <rect x="740" y="200" width="180" height="120" rx="6" />
+
+      <!-- Downtown D.C. & Penn Quarter Blocks -->
+      <rect x="440" y="330" width="110" height="80" rx="4" />
+      <rect x="570" y="330" width="120" height="80" rx="4" />
+      <rect x="710" y="330" width="130" height="80" rx="4" />
+      <rect x="860" y="330" width="150" height="90" rx="6" />
+      <rect x="1040" y="320" width="180" height="100" rx="6" />
+      <rect x="1250" y="310" width="200" height="110" rx="6" />
+
+      <!-- Capitol Hill & Northeast/Southeast D.C. Blocks -->
+      <rect x="940" y="180" width="180" height="130" rx="6" />
+      <rect x="1140" y="160" width="190" height="150" rx="6" />
+      <rect x="1360" y="140" width="220" height="160" rx="6" />
+
+      <rect x="880" y="440" width="160" height="110" rx="6" />
+      <rect x="1060" y="440" width="180" height="120" rx="6" />
+      <rect x="1270" y="450" width="200" height="130" rx="6" />
+
+      <!-- Southwest Waterfront, Navy Yard & Anacostia -->
+      <rect x="580" y="600" width="140" height="100" rx="6" />
+      <rect x="740" y="580" width="150" height="110" rx="6" />
+      <rect x="910" y="580" width="160" height="120" rx="6" />
+      <rect x="1090" y="590" width="180" height="130" rx="6" />
+
+      <rect x="620" y="740" width="160" height="130" rx="6" />
+      <rect x="810" y="730" width="180" height="140" rx="6" />
+      <rect x="1020" y="740" width="200" height="150" rx="6" />
+      <rect x="1250" y="750" width="220" height="160" rx="6" />
+
+      <rect x="650" y="900" width="180" height="150" rx="6" />
+      <rect x="860" y="910" width="200" height="160" rx="6" />
+      <rect x="1090" y="920" width="220" height="170" rx="6" />
+    </g>
+
+    <!-- 4. PARKS & GREEN ZONES -->
+    <g fill="url(#parkGrad)" stroke="#204a43" stroke-width="1.5">
+      <!-- Rock Creek Park Corridor -->
+      <path d="M420,-200 Q460,80 410,200 Q380,280 320,330 L300,310 Q360,250 380,160 Q410,70 380,-200 Z" />
+      
+      <!-- THE NATIONAL MALL -->
+      <rect x="360" y="430" width="460" height="65" rx="8" />
+
+      <!-- The Ellipse & White House Grounds -->
+      <path d="M520,360 A35,25 0 0 1 590,360 L590,425 L520,425 Z" />
+
+      <!-- Constitution Gardens Lake -->
+      <ellipse cx="440" cy="455" rx="35" ry="12" fill="#0d1b26" stroke="#193744" />
+
+      <!-- East Potomac Park (Hains Point Peninsula) -->
+      <path d="M460,600 Q490,680 540,790 Q560,900 540,950 Q510,900 460,740 Q430,660 440,600 Z" />
+
+      <!-- Anacostia Park & Kingman Island -->
+      <path d="M960,560 Q1060,500 1240,540 Q1380,680 1280,820 Q1080,880 940,600 Z" />
+
+      <!-- U.S. National Arboretum -->
+      <path d="M1100,-50 Q1340,-70 1420,80 Q1320,280 1120,240 Z" />
+    </g>
+
+    <!-- 5. WATER BODIES -->
+    <g fill="url(#waterGrad)" stroke="#162a39" stroke-width="2">
+      <!-- Main Potomac River Extended Far Left -->
+      <path d="M-1200,-150 L-100,-100 Q180,230 290,340 C340,390 320,450 330,500 C350,560 410,580 430,640 C460,720 440,900 480,1200 L-1200,1200 L-1200,-150 Z" />
+
+      <!-- Tidal Basin -->
+      <path d="M430,495 C400,530 420,585 475,585 C520,585 530,540 500,505 C485,490 455,490 430,495 Z" />
+
+      <!-- Anacostia River -->
+      <path d="M1700,-100 C1450,160 1220,380 1040,500 C980,580 880,600 540,640 L530,590 C840,560 920,520 980,440 C1160,240 1380,80 1700,-50 Z" />
+    </g>
+
+    <!-- 6. STREET NETWORK & FAMOUS D.C. DIAGONAL AVENUES -->
+    <g stroke="rgba(255, 255, 255, 0.08)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="-1200" y1="-50" x2="1700" y2="-50" />
+      <line x1="-1200" y1="50" x2="1700" y2="50" />
+      <line x1="-1200" y1="150" x2="1700" y2="150" />
+      <line x1="-1200" y1="230" x2="1700" y2="230" />
+      <line x1="-1200" y1="310" x2="1700" y2="310" />
+      <line x1="-1200" y1="425" x2="1700" y2="425" />
+      <line x1="-1200" y1="500" x2="1700" y2="500" />
+      <line x1="-1200" y1="620" x2="1700" y2="620" />
+      <line x1="-1200" y1="730" x2="1700" y2="730" />
+      <line x1="-1200" y1="850" x2="1700" y2="850" />
+      <line x1="-1200" y1="980" x2="1700" y2="980" />
+
+      <line x1="-1000" y1="-200" x2="-1000" y2="1200" />
+      <line x1="-800" y1="-200" x2="-800" y2="1200" />
+      <line x1="-600" y1="-200" x2="-600" y2="1200" />
+      <line x1="-400" y1="-200" x2="-400" y2="1200" />
+      <line x1="-200" y1="-200" x2="-200" y2="1200" />
+      <line x1="-150" y1="-200" x2="-150" y2="1200" />
+      <line x1="0" y1="-200" x2="0" y2="1200" />
+      <line x1="180" y1="-200" x2="180" y2="1200" />
+      <line x1="360" y1="-200" x2="360" y2="1200" />
+      <line x1="550" y1="-200" x2="550" y2="1200" />
+      <line x1="700" y1="-200" x2="700" y2="1200" />
+      <line x1="820" y1="-200" x2="820" y2="1200" />
+      <line x1="980" y1="-200" x2="980" y2="1200" />
+      <line x1="1150" y1="-200" x2="1150" y2="1200" />
+      <line x1="1320" y1="-200" x2="1320" y2="1200" />
+      <line x1="1500" y1="-200" x2="1500" y2="1200" />
+
+      <!-- Pennsylvania Avenue NW (Top-left to bottom-right diagonal - RED) -->
+      <line x1="-800" y1="40" x2="1800" y2="725" stroke="rgba(255, 82, 82, 0.25)" stroke-width="4.5" />
+      <line x1="-800" y1="40" x2="1800" y2="725" stroke="#ff5252" stroke-width="3" class="animated-avenue-dash" opacity="0.85" />
+      
+      <!-- Massachusetts Avenue NW (Top-left to bottom-right diagonal - RED) -->
+      <line x1="-800" y1="-180" x2="1800" y2="860" stroke="rgba(255, 107, 91, 0.2)" stroke-width="4" />
+      <line x1="-800" y1="-180" x2="1800" y2="860" stroke="#ff7e6f" stroke-width="2.5" class="animated-avenue-dash-reverse" opacity="0.8" />
+      
+      <!-- Connecticut Avenue NW (FULL SCREEN ELECTRIC GREEN ACCENT) -->
+      <line x1="-400" y1="-300" x2="900" y2="1200" stroke="rgba(52, 211, 153, 0.3)" stroke-width="4.5" />
+      <line x1="-400" y1="-300" x2="900" y2="1200" stroke="#34d399" stroke-width="2.5" class="animated-avenue-dash" opacity="0.9" />
+      
+      <!-- New York Avenue NW (FULL SCREEN ELECTRIC GREEN ACCENT) -->
+      <line x1="-800" y1="800" x2="1800" y2="40" stroke="rgba(52, 211, 153, 0.25)" stroke-width="4.5" />
+      <line x1="-800" y1="800" x2="1800" y2="40" stroke="#34d399" stroke-width="2.5" class="animated-avenue-dash-reverse" opacity="0.85" />
+      
+      <!-- Rhode Island Avenue NE (FULL SCREEN MINT TEAL GREEN) -->
+      <line x1="-800" y1="700" x2="1800" y2="-120" stroke="rgba(45, 212, 191, 0.25)" stroke-width="4.5" />
+      <line x1="-800" y1="700" x2="1800" y2="-120" stroke="#2dd4bf" stroke-width="2.5" class="animated-avenue-dash" opacity="0.85" />
+
+      <!-- Wisconsin Avenue NW (FULL SCREEN GREEN ACCENT) -->
+      <line x1="-200" y1="-300" x2="600" y2="1200" stroke="rgba(52, 211, 153, 0.25)" stroke-width="4" />
+      <line x1="-200" y1="-300" x2="600" y2="1200" stroke="#34d399" stroke-width="2.2" class="animated-avenue-dash-reverse" opacity="0.8" />
+      
+      <!-- Florida Avenue Diagonal (FULL SCREEN SKY BLUE ACCENT) -->
+      <line x1="-800" y1="200" x2="1800" y2="550" stroke="rgba(56, 189, 248, 0.2)" stroke-width="4" />
+      <line x1="-800" y1="200" x2="1800" y2="550" stroke="#38bdf8" stroke-width="2" class="animated-avenue-dash" opacity="0.75" />
+    </g>
+
+    <!-- 7. PRIMARY ARTERIAL HIGHWAYS & BRIDGES (ANIMATED REAL-TIME TRAFFIC FLOW) -->
+    <g stroke-linecap="round" stroke-linejoin="round">
+      <!-- Southern I-395 Highway (AMBER GOLD) -->
+      <path d="M-1000,1150 L220,780 L420,640 L550,510 L820,510 L1080,620 L1800,750" stroke="url(#highwayGrad)" stroke-width="9" fill="none" filter="url(#mapShadow)" />
+      <path d="M-1000,1150 L220,780 L420,640 L550,510 L820,510 L1080,620 L1800,750" stroke="#ffffff" stroke-width="3" class="animated-highway-dash" fill="none" opacity="0.9" />
+
+      <!-- Horizontal Route (SKY BLUE) -->
+      <path d="M-1000,440 L120,440 L310,430 L360,425 L1800,425" stroke="url(#routeGrad)" stroke-width="8" fill="none" opacity="0.9" />
+      <path d="M-1000,440 L120,440 L310,430 L360,425 L1800,425" stroke="#ffffff" stroke-width="2.5" class="animated-highway-dash-reverse" fill="none" opacity="0.95" />
+
+      <!-- Top Curved Highway (EMERALD GREEN) -->
+      <path d="M-1000,-150 Q600,-280 1800,120" stroke="url(#emeraldGrad)" stroke-width="8" fill="none" opacity="0.9" />
+      <path d="M-1000,-150 Q600,-280 1800,120" stroke="#ffffff" stroke-width="2.5" class="animated-highway-dash" fill="none" opacity="0.9" />
+
+      <!-- Anacostia Southeast Highway (EMERALD GREEN GRADIENT) -->
+      <path d="M1800,-100 L1220,380 L1020,680 L1180,950 L1400,1300" stroke="url(#emeraldGrad)" stroke-width="8" fill="none" opacity="0.9" />
+      <path d="M1800,-100 L1220,380 L1020,680 L1180,950 L1400,1300" stroke="#ffffff" stroke-width="2.5" class="animated-highway-dash-reverse" fill="none" opacity="0.9" />
+    </g>
+
+    <!-- 8. ACTIVE TOP-LEFT TO BOTTOM-RIGHT ROUTE (CRIMSON RED) -->
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-1000,-100 L280,320 L550,360 L550,430 L820,465 L940,580 L1800,1100" stroke="rgba(255, 82, 82, 0.35)" stroke-width="14" />
+      <path d="M-1000,-100 L280,320 L550,360 L550,430 L820,465 L940,580 L1800,1100" stroke="url(#redOrangeGrad)" stroke-width="6" class="gps-route-line" />
+      
+      <circle cx="280" cy="320" r="6" fill="#ff5252" stroke="#ffffff" stroke-width="2.5" />
+      <circle cx="550" cy="360" r="4.5" fill="#ffffff" stroke="#ea4335" stroke-width="2" />
+      <circle cx="550" cy="430" r="4.5" fill="#ffffff" stroke="#ea4335" stroke-width="2" />
+      <circle cx="820" cy="465" r="5" fill="#ff5252" stroke="#ffffff" stroke-width="2.5" />
+      <circle cx="940" cy="580" r="4.5" fill="#ffffff" stroke="#ea4335" stroke-width="2" />
+    </g>
+
+    <!-- 9. D.C. LANDMARKS & GEOGRAPHIC TYPOGRAPHY (NO TEXT LABELS ON LEFT HALF OVER MESSAGING) -->
+    <g font-family="Inter, sans-serif" font-weight="600" opacity="0.75">
+      <text x="800" y="160" font-family="Outfit, sans-serif" font-size="28" fill="#ffffff" opacity="0.08" font-weight="900" letter-spacing="0.25em" text-anchor="middle">WASHINGTON, D.C.</text>
+
+      <text x="1140" y="380" font-size="12" fill="#38bdf8" font-weight="700" transform="rotate(-35 1140 380)" letter-spacing="0.1em">ANACOSTIA RIVER</text>
+
+      <text x="800" y="470" font-size="14" fill="#5eead4" font-weight="800" letter-spacing="0.08em" text-anchor="middle">THE NATIONAL MALL</text>
+      <text x="825" y="468" font-size="11" fill="#fbbf24" font-weight="800">U.S. CAPITOL</text>
+
+      <text x="880" y="420" font-size="12" fill="#cbd5e1" font-weight="700">Capitol Hill</text>
+      <text x="860" y="630" font-size="12" fill="#cbd5e1" font-weight="700">Navy Yard</text>
+    </g>
+
+    <!-- 10. ATMOSPHERIC FOG MIST OVERLAY -->
+    <rect x="-1200" y="-300" width="3200" height="1500" fill="url(#mistFogGlow)" pointer-events="none" />
+
+    <!-- 11. SOLID MONOCHROMATIC LEFT-TO-RIGHT FADE OVERLAY -->
+    <rect x="-1200" y="-300" width="3200" height="1500" fill="url(#leftToRightFade)" pointer-events="none" />
+  </svg>
+
+  <!-- Interactive Map Location Pins (Realistic 3D Location Map Pins) -->
+  <div class="pins-container">
+    @for (event of eventService.mockEvents; track event.id) {
+      <div 
+        class="map-pin" 
+        [style.left.%]="event.coordinates.x" 
+        [style.top.%]="event.coordinates.y"
+        (click)="selectPin(event)"
+        [class.active]="eventService.activeMapPin()?.id === event.id"
+      >
+        <!-- Ground Shadow Ellipse for Needle Tip -->
+        <div class="pin-ground-shadow"></div>
+
+        <!-- Compact Teardrop Map Pin Marker (Smaller & Distinct from Logo) -->
+        <div class="pin-wrapper" [class.host-pin]="event.category === 'Music' || event.category === 'Networking'">
+          <svg class="pin-svg" viewBox="0 0 24 32" width="22" height="29">
+            <defs>
+              <linearGradient [id]="'pinGrad-' + event.id" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" [attr.stop-color]="event.category === 'Music' || event.category === 'Networking' ? '#f59e0b' : '#ff6b5b'" />
+                <stop offset="100%" [attr.stop-color]="event.category === 'Music' || event.category === 'Networking' ? '#b45309' : '#dc2626'" />
+              </linearGradient>
+              <filter [id]="'pinGlow-' + event.id" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="3" stdDeviation="3" [attr.flood-color]="event.category === 'Music' || event.category === 'Networking' ? 'rgba(245, 158, 11, 0.5)' : 'rgba(239, 68, 68, 0.5)'" />
+              </filter>
+            </defs>
+
+            <!-- Sleek Compact Teardrop Pin Marker -->
+            <path 
+              d="M12 1 C5.925 1 1 5.925 1 12 C1 20 12 30 12 30 C12 30 23 20 23 12 C23 5.925 18.075 1 12 1 Z" 
+              [attr.fill]="'url(#pinGrad-' + event.id + ')'" 
+              stroke="#ffffff" 
+              stroke-width="1.8"
+              stroke-linejoin="round"
+              [attr.filter]="'url(#pinGlow-' + event.id + ')'"
+            />
+
+            <!-- Inner White Core Badge -->
+            <circle cx="12" cy="11" r="5" fill="#ffffff" />
+            
+            <!-- Category Core Dot -->
+            <circle cx="12" cy="11" r="3" [attr.fill]="event.category === 'Music' || event.category === 'Networking' ? '#b45309' : '#dc2626'" />
+          </svg>
+        </div>
+        
+        <!-- Pin Hover Tooltip -->
+        <div class="pin-tooltip">
+          <span class="tooltip-tag">{{ event.category }}</span>
+          <strong class="tooltip-title">{{ event.title }}</strong>
+          <span class="tooltip-loc">{{ event.location }}</span>
+        </div>
+      </div>
+    }
+  </div>
+</div>
