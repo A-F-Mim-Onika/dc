@@ -72,7 +72,14 @@ html, body {
   min-height: 100vh;
   font-family: var(--font-body);
   color: var(--text-primary);
-  background: var(--bg-canvas);
+  background-color: #0b131d;
+  background-image: 
+    radial-gradient(ellipse 90% 70% at 50% -15%, rgba(56, 189, 248, 0.18) 0%, transparent 65%),
+    radial-gradient(circle 600px at 85% 35%, rgba(245, 158, 11, 0.10) 0%, transparent 70%),
+    radial-gradient(circle 700px at 15% 75%, rgba(2, 132, 199, 0.15) 0%, transparent 70%),
+    linear-gradient(180deg, #0d1723 0%, #080d14 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -223,10 +230,62 @@ h1, h2, h3, h4, h5, h6 {
   transition: all var(--transition-fast);
 }
 
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #64748b;
+  opacity: 0.72;
+  font-size: 0.835rem;
+  font-weight: 400;
+}
+
 .form-input:focus, .form-select:focus, .form-textarea:focus {
   background: rgba(20, 31, 44, 0.9);
   border-color: var(--amber-glow);
   box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2);
+}
+
+/* Global browser autocomplete / autofill fix to prevent white background & black preview text */
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #0f1821 inset !important;
+  box-shadow: 0 0 0 1000px #0f1821 inset !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  color: #f8fafc !important;
+  caret-color: #38bdf8 !important;
+}
+
+input:-webkit-autofill:hover,
+textarea:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #0f1821 inset !important;
+  box-shadow: 0 0 0 1000px #0f1821 inset !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  color: #f8fafc !important;
+  caret-color: #38bdf8 !important;
+}
+
+input:-webkit-autofill-previewed,
+textarea:-webkit-autofill-previewed {
+  -webkit-box-shadow: 0 0 0 1000px #0f1821 inset !important;
+  box-shadow: 0 0 0 1000px #0f1821 inset !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  color: #f8fafc !important;
+}
+
+input:autofill,
+textarea:autofill {
+  -webkit-box-shadow: 0 0 0 1000px #0f1821 inset !important;
+  box-shadow: 0 0 0 1000px #0f1821 inset !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  color: #f8fafc !important;
+}
+
+input::selection,
+textarea::selection {
+  background: rgba(56, 189, 248, 0.35);
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 /* Animations */

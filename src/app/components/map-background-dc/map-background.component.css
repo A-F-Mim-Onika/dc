@@ -1,0 +1,145 @@
+:host {
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+
+  /* 2-Color Palette: Dark Canvas (#0f1821) + Sky Cyan (#38bdf8) */
+  --map-bg: transparent; /* lets page background show through */
+  --map-primary-cyan: #38bdf8;
+  --map-water-fill: rgba(56, 189, 248, 0.28);
+  --map-water-stroke: rgba(56, 189, 248, 0.55);
+  
+  --map-street-minor: rgba(56, 189, 248, 0.35);
+  --map-street-major: rgba(56, 189, 248, 0.60);
+  --map-street-arterial: rgba(56, 189, 248, 0.88);
+  
+  --map-park-fill: rgba(56, 189, 248, 0.12);
+  --map-park-stroke: rgba(56, 189, 248, 0.35);
+
+  --spot-radius: 130px;
+}
+
+.carto-map-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Very small focused spotlight mask directly centered on cursor */
+  -webkit-mask-image: radial-gradient(
+    circle var(--spot-radius) at var(--spot-x, -1000px) var(--spot-y, -1000px),
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.55) 45%,
+    rgba(0, 0, 0, 0.15) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: radial-gradient(
+    circle var(--spot-radius) at var(--spot-x, -1000px) var(--spot-y, -1000px),
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.55) 45%,
+    rgba(0, 0, 0, 0.15) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.carto-map-container.is-hovered {
+  opacity: 0.45;
+}
+
+.carto-map-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  display: block;
+}
+
+/* Water Elements */
+.water-fill {
+  fill: var(--map-water-fill);
+  stroke: var(--map-water-stroke);
+  stroke-width: 1.5px;
+}
+
+/* Parks & Open Spaces */
+.park-fill {
+  fill: var(--map-park-fill);
+  stroke: var(--map-park-stroke);
+  stroke-width: 0.8px;
+}
+
+/* Streets Hierarchies (Vector-effect ensures uniform crispness on retina and mobile) */
+.street-minor {
+  stroke: var(--map-street-minor);
+  stroke-width: 0.75px;
+}
+
+.street-major {
+  stroke: var(--map-street-major);
+  stroke-width: 1.35px;
+}
+
+.street-arterial {
+  stroke: var(--map-street-arterial);
+  stroke-width: 2.2px;
+}
+
+.circle-roundabout {
+  stroke: var(--map-street-arterial);
+  stroke-width: 1.4px;
+}
+
+/* Place & Landmark Typography */
+.place-label {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  fill: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+}
+
+.place-label--neighborhood {
+  font-size: 11px;
+  fill: #e0f2fe;
+}
+
+.place-label--landmark {
+  font-size: 9.5px;
+  fill: #38bdf8;
+  font-weight: 600;
+}
+
+.place-label--water {
+  font-size: 11px;
+  fill: rgba(56, 189, 248, 0.8);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.street-text {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 8px;
+  fill: rgba(224, 242, 254, 0.75);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+

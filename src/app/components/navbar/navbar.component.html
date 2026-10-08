@@ -1,5 +1,5 @@
-<header class="navbar-wrapper">
-  <div class="navbar-container glass-panel">
+<header class="navbar-wrapper" [class.is-scrolled]="isScrolled()">
+  <div class="navbar-container">
     <!-- Brand Logo (Left Side) -->
     <a routerLink="/" class="brand-logo">
       <div class="logo-mark">
@@ -20,40 +20,6 @@
       </div>
       <span class="brand-name">Meet<span class="accent">Map</span></span>
     </a>
-
-    <!-- Right Side Group: Sign In, Join Us, Become a Host (Hidden on Auth pages) -->
-    @if (!isAuthPage()) {
-      <div class="right-nav-group">
-        <a routerLink="/signin" routerLinkActive="active" class="nav-tab">Sign In</a>
-        <a [routerLink]="['/signup']" [queryParams]="{ role: 'guest' }" routerLinkActive="active" class="btn-join-cta">Join as a Guest</a>
-        <a [routerLink]="['/signup']" [queryParams]="{ role: 'host' }" class="btn-host-cta">Become a Host</a>
-      </div>
-
-      <!-- Mobile Menu Hamburger Button -->
-      <button class="mobile-toggle" (click)="toggleMobileMenu()">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          @if (!mobileMenuOpen()) {
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          } @else {
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          }
-        </svg>
-      </button>
-    }
   </div>
-
-  <!-- Mobile Dropdown Menu Drawer -->
-  @if (!isAuthPage() && mobileMenuOpen()) {
-    <div class="mobile-drawer glass-panel">
-      <a routerLink="/signin" (click)="closeMenu()">Sign In</a>
-      <a [routerLink]="['/signup']" [queryParams]="{ role: 'guest' }" (click)="closeMenu()">Join as a Guest</a>
-      <hr class="drawer-divider" />
-      <div class="drawer-actions">
-        <a [routerLink]="['/signup']" [queryParams]="{ role: 'host' }" class="btn-host-cta w-full" (click)="closeMenu()">Become a Host</a>
-      </div>
-    </div>
-  }
 </header>
+

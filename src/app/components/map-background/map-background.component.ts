@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EventDataService, EventItem } from '../../services/event-data.service';
 
@@ -11,6 +11,10 @@ import { EventDataService, EventItem } from '../../services/event-data.service';
 })
 export class MapBackgroundComponent {
   eventService = inject(EventDataService);
+
+  @Input() showPins = true;
+  @Input() showAnimations = true;
+  @Input() showColorfulRoads = true;
 
   selectPin(event: EventItem) {
     this.eventService.activeMapPin.set(event);

@@ -93,40 +93,8 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer-wrapper glass-panel">
-    <div class="footer-content">
-      <div class="footer-brand">
-        <span class="brand-title">Meet<span class="accent">Map</span></span>
-        <p>Discover real-world gatherings, vibrant local experiences, and meaningful connections happening near you in real time.</p>
-      </div>
-
-      <div class="footer-links">
-        <div class="link-col">
-          <strong>Platform</strong>
-          <a routerLink="/">Home</a>
-          <a routerLink="/pricing">Pricing</a>
-        </div>
-        <div class="link-col">
-          <strong>User Roles</strong>
-          <a [routerLink]="['/signup']" [queryParams]="{ role: 'guest' }">I'm a Guest</a>
-          <a [routerLink]="['/signup']" [queryParams]="{ role: 'host' }">I'm a Host</a>
-        </div>
-        <div class="link-col">
-          <strong>Account</strong>
-          <a routerLink="/signin">Sign In</a>
-          <a routerLink="/signup">Get Started</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <span>© 2026 MeetMap Inc. All rights reserved.</span>
-      <div class="social-tags">
-        <span>Twitter</span> • <span>LinkedIn</span> • <span>Discord</span>
-      </div>
-    </div>
-  </footer>
+  <!-- FOOTER COMPONENT -->
+  <app-footer></app-footer>
 
 </main>
 

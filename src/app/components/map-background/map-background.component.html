@@ -206,65 +206,93 @@
       <line x1="1320" y1="-200" x2="1320" y2="1200" />
       <line x1="1500" y1="-200" x2="1500" y2="1200" />
 
-      <!-- Pennsylvania Avenue NW (Top-left to bottom-right diagonal - RED) -->
-      <line x1="-800" y1="40" x2="1800" y2="725" stroke="rgba(255, 82, 82, 0.25)" stroke-width="4.5" />
-      <line x1="-800" y1="40" x2="1800" y2="725" stroke="#ff5252" stroke-width="3" class="animated-avenue-dash" opacity="0.85" />
-      
-      <!-- Massachusetts Avenue NW (Top-left to bottom-right diagonal - RED) -->
-      <line x1="-800" y1="-180" x2="1800" y2="860" stroke="rgba(255, 107, 91, 0.2)" stroke-width="4" />
-      <line x1="-800" y1="-180" x2="1800" y2="860" stroke="#ff7e6f" stroke-width="2.5" class="animated-avenue-dash-reverse" opacity="0.8" />
-      
-      <!-- Connecticut Avenue NW (FULL SCREEN ELECTRIC GREEN ACCENT) -->
-      <line x1="-400" y1="-300" x2="900" y2="1200" stroke="rgba(52, 211, 153, 0.3)" stroke-width="4.5" />
-      <line x1="-400" y1="-300" x2="900" y2="1200" stroke="#34d399" stroke-width="2.5" class="animated-avenue-dash" opacity="0.9" />
-      
-      <!-- New York Avenue NW (FULL SCREEN ELECTRIC GREEN ACCENT) -->
-      <line x1="-800" y1="800" x2="1800" y2="40" stroke="rgba(52, 211, 153, 0.25)" stroke-width="4.5" />
-      <line x1="-800" y1="800" x2="1800" y2="40" stroke="#34d399" stroke-width="2.5" class="animated-avenue-dash-reverse" opacity="0.85" />
-      
-      <!-- Rhode Island Avenue NE (FULL SCREEN MINT TEAL GREEN) -->
-      <line x1="-800" y1="700" x2="1800" y2="-120" stroke="rgba(45, 212, 191, 0.25)" stroke-width="4.5" />
-      <line x1="-800" y1="700" x2="1800" y2="-120" stroke="#2dd4bf" stroke-width="2.5" class="animated-avenue-dash" opacity="0.85" />
+      @if (showColorfulRoads) {
+        <!-- Pennsylvania Avenue NW (Top-left to bottom-right diagonal - RED) -->
+        <line x1="-800" y1="40" x2="1800" y2="725" stroke="rgba(255, 82, 82, 0.25)" stroke-width="4.5" />
+        @if (showAnimations) {
+          <line x1="-800" y1="40" x2="1800" y2="725" stroke="#ff5252" stroke-width="3" class="animated-avenue-dash" opacity="0.85" />
+        }
+        
+        <!-- Massachusetts Avenue NW (Top-left to bottom-right diagonal - RED) -->
+        <line x1="-800" y1="-180" x2="1800" y2="860" stroke="rgba(255, 107, 91, 0.2)" stroke-width="4" />
+        @if (showAnimations) {
+          <line x1="-800" y1="-180" x2="1800" y2="860" stroke="#ff7e6f" stroke-width="2.5" class="animated-avenue-dash-reverse" opacity="0.8" />
+        }
+        
+        <!-- Connecticut Avenue NW (FULL SCREEN ELECTRIC GREEN ACCENT) -->
+        <line x1="-400" y1="-300" x2="900" y2="1200" stroke="rgba(52, 211, 153, 0.3)" stroke-width="4.5" />
+        @if (showAnimations) {
+          <line x1="-400" y1="-300" x2="900" y2="1200" stroke="#34d399" stroke-width="2.5" class="animated-avenue-dash" opacity="0.9" />
+        }
+        
+        <!-- New York Avenue NW (FULL SCREEN ELECTRIC GREEN ACCENT) -->
+        <line x1="-800" y1="800" x2="1800" y2="40" stroke="rgba(52, 211, 153, 0.25)" stroke-width="4.5" />
+        @if (showAnimations) {
+          <line x1="-800" y1="800" x2="1800" y2="40" stroke="#34d399" stroke-width="2.5" class="animated-avenue-dash-reverse" opacity="0.85" />
+        }
+        
+        <!-- Rhode Island Avenue NE (FULL SCREEN MINT TEAL GREEN) -->
+        <line x1="-800" y1="700" x2="1800" y2="-120" stroke="rgba(45, 212, 191, 0.25)" stroke-width="4.5" />
+        @if (showAnimations) {
+          <line x1="-800" y1="700" x2="1800" y2="-120" stroke="#2dd4bf" stroke-width="2.5" class="animated-avenue-dash" opacity="0.85" />
+        }
 
-      <!-- Wisconsin Avenue NW (FULL SCREEN GREEN ACCENT) -->
-      <line x1="-200" y1="-300" x2="600" y2="1200" stroke="rgba(52, 211, 153, 0.25)" stroke-width="4" />
-      <line x1="-200" y1="-300" x2="600" y2="1200" stroke="#34d399" stroke-width="2.2" class="animated-avenue-dash-reverse" opacity="0.8" />
-      
-      <!-- Florida Avenue Diagonal (FULL SCREEN SKY BLUE ACCENT) -->
-      <line x1="-800" y1="200" x2="1800" y2="550" stroke="rgba(56, 189, 248, 0.2)" stroke-width="4" />
-      <line x1="-800" y1="200" x2="1800" y2="550" stroke="#38bdf8" stroke-width="2" class="animated-avenue-dash" opacity="0.75" />
+        <!-- Wisconsin Avenue NW (FULL SCREEN GREEN ACCENT) -->
+        <line x1="-200" y1="-300" x2="600" y2="1200" stroke="rgba(52, 211, 153, 0.25)" stroke-width="4" />
+        @if (showAnimations) {
+          <line x1="-200" y1="-300" x2="600" y2="1200" stroke="#34d399" stroke-width="2.2" class="animated-avenue-dash-reverse" opacity="0.8" />
+        }
+        
+        <!-- Florida Avenue Diagonal (FULL SCREEN SKY BLUE ACCENT) -->
+        <line x1="-800" y1="200" x2="1800" y2="550" stroke="rgba(56, 189, 248, 0.2)" stroke-width="4" />
+        @if (showAnimations) {
+          <line x1="-800" y1="200" x2="1800" y2="550" stroke="#38bdf8" stroke-width="2" class="animated-avenue-dash" opacity="0.75" />
+        }
+      }
     </g>
 
     <!-- 7. PRIMARY ARTERIAL HIGHWAYS & BRIDGES (ANIMATED REAL-TIME TRAFFIC FLOW) -->
-    <g stroke-linecap="round" stroke-linejoin="round">
-      <!-- Southern I-395 Highway (AMBER GOLD) -->
-      <path d="M-1000,1150 L220,780 L420,640 L550,510 L820,510 L1080,620 L1800,750" stroke="url(#highwayGrad)" stroke-width="9" fill="none" filter="url(#mapShadow)" />
-      <path d="M-1000,1150 L220,780 L420,640 L550,510 L820,510 L1080,620 L1800,750" stroke="#ffffff" stroke-width="3" class="animated-highway-dash" fill="none" opacity="0.9" />
+    @if (showColorfulRoads) {
+      <g stroke-linecap="round" stroke-linejoin="round">
+        <!-- Southern I-395 Highway (AMBER GOLD) -->
+        <path d="M-1000,1150 L220,780 L420,640 L550,510 L820,510 L1080,620 L1800,750" stroke="url(#highwayGrad)" stroke-width="9" fill="none" filter="url(#mapShadow)" />
+        @if (showAnimations) {
+          <path d="M-1000,1150 L220,780 L420,640 L550,510 L820,510 L1080,620 L1800,750" stroke="#ffffff" stroke-width="3" class="animated-highway-dash" fill="none" opacity="0.9" />
+        }
 
-      <!-- Horizontal Route (SKY BLUE) -->
-      <path d="M-1000,440 L120,440 L310,430 L360,425 L1800,425" stroke="url(#routeGrad)" stroke-width="8" fill="none" opacity="0.9" />
-      <path d="M-1000,440 L120,440 L310,430 L360,425 L1800,425" stroke="#ffffff" stroke-width="2.5" class="animated-highway-dash-reverse" fill="none" opacity="0.95" />
+        <!-- Horizontal Route (SKY BLUE) -->
+        <path d="M-1000,440 L120,440 L310,430 L360,425 L1800,425" stroke="url(#routeGrad)" stroke-width="8" fill="none" opacity="0.9" />
+        @if (showAnimations) {
+          <path d="M-1000,440 L120,440 L310,430 L360,425 L1800,425" stroke="#ffffff" stroke-width="2.5" class="animated-highway-dash-reverse" fill="none" opacity="0.95" />
+        }
 
-      <!-- Top Curved Highway (EMERALD GREEN) -->
-      <path d="M-1000,-150 Q600,-280 1800,120" stroke="url(#emeraldGrad)" stroke-width="8" fill="none" opacity="0.9" />
-      <path d="M-1000,-150 Q600,-280 1800,120" stroke="#ffffff" stroke-width="2.5" class="animated-highway-dash" fill="none" opacity="0.9" />
+        <!-- Top Curved Highway (EMERALD GREEN) -->
+        <path d="M-1000,-150 Q600,-280 1800,120" stroke="url(#emeraldGrad)" stroke-width="8" fill="none" opacity="0.9" />
+        @if (showAnimations) {
+          <path d="M-1000,-150 Q600,-280 1800,120" stroke="#ffffff" stroke-width="2.5" class="animated-highway-dash" fill="none" opacity="0.9" />
+        }
 
-      <!-- Anacostia Southeast Highway (EMERALD GREEN GRADIENT) -->
-      <path d="M1800,-100 L1220,380 L1020,680 L1180,950 L1400,1300" stroke="url(#emeraldGrad)" stroke-width="8" fill="none" opacity="0.9" />
-      <path d="M1800,-100 L1220,380 L1020,680 L1180,950 L1400,1300" stroke="#ffffff" stroke-width="2.5" class="animated-highway-dash-reverse" fill="none" opacity="0.9" />
-    </g>
+        <!-- Anacostia Southeast Highway (EMERALD GREEN GRADIENT) -->
+        <path d="M1800,-100 L1220,380 L1020,680 L1180,950 L1400,1300" stroke="url(#emeraldGrad)" stroke-width="8" fill="none" opacity="0.9" />
+        @if (showAnimations) {
+          <path d="M1800,-100 L1220,380 L1020,680 L1180,950 L1400,1300" stroke="#ffffff" stroke-width="2.5" class="animated-highway-dash-reverse" fill="none" opacity="0.9" />
+        }
+      </g>
+    }
 
     <!-- 8. ACTIVE TOP-LEFT TO BOTTOM-RIGHT ROUTE (CRIMSON RED) -->
-    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M-1000,-100 L280,320 L550,360 L550,430 L820,465 L940,580 L1800,1100" stroke="rgba(255, 82, 82, 0.35)" stroke-width="14" />
-      <path d="M-1000,-100 L280,320 L550,360 L550,430 L820,465 L940,580 L1800,1100" stroke="url(#redOrangeGrad)" stroke-width="6" class="gps-route-line" />
-      
-      <circle cx="280" cy="320" r="6" fill="#ff5252" stroke="#ffffff" stroke-width="2.5" />
-      <circle cx="550" cy="360" r="4.5" fill="#ffffff" stroke="#ea4335" stroke-width="2" />
-      <circle cx="550" cy="430" r="4.5" fill="#ffffff" stroke="#ea4335" stroke-width="2" />
-      <circle cx="820" cy="465" r="5" fill="#ff5252" stroke="#ffffff" stroke-width="2.5" />
-      <circle cx="940" cy="580" r="4.5" fill="#ffffff" stroke="#ea4335" stroke-width="2" />
-    </g>
+    @if (showColorfulRoads && showAnimations) {
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M-1000,-100 L280,320 L550,360 L550,430 L820,465 L940,580 L1800,1100" stroke="rgba(255, 82, 82, 0.35)" stroke-width="14" />
+        <path d="M-1000,-100 L280,320 L550,360 L550,430 L820,465 L940,580 L1800,1100" stroke="url(#redOrangeGrad)" stroke-width="6" class="gps-route-line" />
+        
+        <circle cx="280" cy="320" r="6" fill="#ff5252" stroke="#ffffff" stroke-width="2.5" />
+        <circle cx="550" cy="360" r="4.5" fill="#ffffff" stroke="#ea4335" stroke-width="2" />
+        <circle cx="550" cy="430" r="4.5" fill="#ffffff" stroke="#ea4335" stroke-width="2" />
+        <circle cx="820" cy="465" r="5" fill="#ff5252" stroke="#ffffff" stroke-width="2.5" />
+        <circle cx="940" cy="580" r="4.5" fill="#ffffff" stroke="#ea4335" stroke-width="2" />
+      </g>
+    }
 
     <!-- 9. D.C. LANDMARKS & GEOGRAPHIC TYPOGRAPHY (NO TEXT LABELS ON LEFT HALF OVER MESSAGING) -->
     <g font-family="Inter, sans-serif" font-weight="600" opacity="0.75">
@@ -287,56 +315,58 @@
   </svg>
 
   <!-- Interactive Map Location Pins (Realistic 3D Location Map Pins) -->
-  <div class="pins-container">
-    @for (event of eventService.mockEvents; track event.id) {
-      <div 
-        class="map-pin" 
-        [style.left.%]="event.coordinates.x" 
-        [style.top.%]="event.coordinates.y"
-        (click)="selectPin(event)"
-        [class.active]="eventService.activeMapPin()?.id === event.id"
-      >
-        <!-- Ground Shadow Ellipse for Needle Tip -->
-        <div class="pin-ground-shadow"></div>
+  @if (showPins) {
+    <div class="pins-container">
+      @for (event of eventService.mockEvents; track event.id) {
+        <div 
+          class="map-pin" 
+          [style.left.%]="event.coordinates.x" 
+          [style.top.%]="event.coordinates.y"
+          (click)="selectPin(event)"
+          [class.active]="eventService.activeMapPin()?.id === event.id"
+        >
+          <!-- Ground Shadow Ellipse for Needle Tip -->
+          <div class="pin-ground-shadow"></div>
 
-        <!-- Compact Teardrop Map Pin Marker (Smaller & Distinct from Logo) -->
-        <div class="pin-wrapper" [class.host-pin]="event.category === 'Music' || event.category === 'Networking'">
-          <svg class="pin-svg" viewBox="0 0 24 32" width="22" height="29">
-            <defs>
-              <linearGradient [id]="'pinGrad-' + event.id" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" [attr.stop-color]="event.category === 'Music' || event.category === 'Networking' ? '#f59e0b' : '#ff6b5b'" />
-                <stop offset="100%" [attr.stop-color]="event.category === 'Music' || event.category === 'Networking' ? '#b45309' : '#dc2626'" />
-              </linearGradient>
-              <filter [id]="'pinGlow-' + event.id" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="3" stdDeviation="3" [attr.flood-color]="event.category === 'Music' || event.category === 'Networking' ? 'rgba(245, 158, 11, 0.5)' : 'rgba(239, 68, 68, 0.5)'" />
-              </filter>
-            </defs>
+          <!-- Compact Teardrop Map Pin Marker (Smaller & Distinct from Logo) -->
+          <div class="pin-wrapper" [class.host-pin]="event.category === 'Music' || event.category === 'Networking'">
+            <svg class="pin-svg" viewBox="0 0 24 32" width="22" height="29">
+              <defs>
+                <linearGradient [id]="'pinGrad-' + event.id" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" [attr.stop-color]="event.category === 'Music' || event.category === 'Networking' ? '#f59e0b' : '#ff6b5b'" />
+                  <stop offset="100%" [attr.stop-color]="event.category === 'Music' || event.category === 'Networking' ? '#b45309' : '#dc2626'" />
+                </linearGradient>
+                <filter [id]="'pinGlow-' + event.id" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="3" stdDeviation="3" [attr.flood-color]="event.category === 'Music' || event.category === 'Networking' ? 'rgba(245, 158, 11, 0.5)' : 'rgba(239, 68, 68, 0.5)'" />
+                </filter>
+              </defs>
 
-            <!-- Sleek Compact Teardrop Pin Marker -->
-            <path 
-              d="M12 1 C5.925 1 1 5.925 1 12 C1 20 12 30 12 30 C12 30 23 20 23 12 C23 5.925 18.075 1 12 1 Z" 
-              [attr.fill]="'url(#pinGrad-' + event.id + ')'" 
-              stroke="#ffffff" 
-              stroke-width="1.8"
-              stroke-linejoin="round"
-              [attr.filter]="'url(#pinGlow-' + event.id + ')'"
-            />
+              <!-- Sleek Compact Teardrop Pin Marker -->
+              <path 
+                d="M12 1 C5.925 1 1 5.925 1 12 C1 20 12 30 12 30 C12 30 23 20 23 12 C23 5.925 18.075 1 12 1 Z" 
+                [attr.fill]="'url(#pinGrad-' + event.id + ')'" 
+                stroke="#ffffff" 
+                stroke-width="1.8"
+                stroke-linejoin="round"
+                [attr.filter]="'url(#pinGlow-' + event.id + ')'"
+              />
 
-            <!-- Inner White Core Badge -->
-            <circle cx="12" cy="11" r="5" fill="#ffffff" />
-            
-            <!-- Category Core Dot -->
-            <circle cx="12" cy="11" r="3" [attr.fill]="event.category === 'Music' || event.category === 'Networking' ? '#b45309' : '#dc2626'" />
-          </svg>
+              <!-- Inner White Core Badge -->
+              <circle cx="12" cy="11" r="5" fill="#ffffff" />
+              
+              <!-- Category Core Dot -->
+              <circle cx="12" cy="11" r="3" [attr.fill]="event.category === 'Music' || event.category === 'Networking' ? '#b45309' : '#dc2626'" />
+            </svg>
+          </div>
+          
+          <!-- Pin Hover Tooltip -->
+          <div class="pin-tooltip">
+            <span class="tooltip-tag">{{ event.category }}</span>
+            <strong class="tooltip-title">{{ event.title }}</strong>
+            <span class="tooltip-loc">{{ event.location }}</span>
+          </div>
         </div>
-        
-        <!-- Pin Hover Tooltip -->
-        <div class="pin-tooltip">
-          <span class="tooltip-tag">{{ event.category }}</span>
-          <strong class="tooltip-title">{{ event.title }}</strong>
-          <span class="tooltip-loc">{{ event.location }}</span>
-        </div>
-      </div>
-    }
-  </div>
+      }
+    </div>
+  }
 </div>

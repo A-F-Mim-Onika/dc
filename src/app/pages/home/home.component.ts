@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { MapBackgroundComponent } from '../../components/map-background/map-background.component';
 import { GuestFormComponent } from '../../components/guest-form/guest-form.component';
 import { HostFormComponent } from '../../components/host-form/host-form.component';
+import { FooterComponent } from '../../components/footer/footer.component';
 import { EventDataService } from '../../services/event-data.service';
 
 @Component({
@@ -11,10 +12,11 @@ import { EventDataService } from '../../services/event-data.service';
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink,
+    // RouterLink,
     MapBackgroundComponent,
     GuestFormComponent,
-    HostFormComponent
+    HostFormComponent,
+    FooterComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

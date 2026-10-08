@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { EventDataService } from '../../services/event-data.service';
@@ -6,7 +6,9 @@ import { EventDataService } from '../../services/event-data.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterLink,
+    //  RouterLinkActive
+  ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
@@ -14,6 +16,12 @@ export class NavbarComponent {
   eventService = inject(EventDataService);
   router = inject(Router);
   mobileMenuOpen = signal<boolean>(false);
+  isScrolled = signal<boolean>(false);
+
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    this.isScrolled.set(window.scrollY > 0);
+  }
 
   isAuthPage(): boolean {
     const url = this.router.url;

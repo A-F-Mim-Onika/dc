@@ -1,0 +1,223 @@
+<div class="dc-map-container" aria-hidden="true">
+  <!-- Scalable Vector Map of Washington, D.C. -->
+  <svg class="dc-map-svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <!-- Base deep navy gradient (#0B1220 to #111A2B) -->
+      <linearGradient id="dcBaseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#0B1220" />
+        <stop offset="50%" stop-color="#0e1625" />
+        <stop offset="100%" stop-color="#111A2B" />
+      </linearGradient>
+
+      <!-- Potomac & Anacostia River Deep Water Gradient -->
+      <linearGradient id="dcRiverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#080e18" />
+        <stop offset="60%" stop-color="#0a1422" />
+        <stop offset="100%" stop-color="#060c14" />
+      </linearGradient>
+
+      <!-- Muted Green Park Fill Gradient -->
+      <linearGradient id="dcParkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#0e1d1b" />
+        <stop offset="100%" stop-color="#122421" />
+      </linearGradient>
+
+      <!-- National Mall Special Muted Green -->
+      <linearGradient id="dcMallGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#122824" />
+        <stop offset="100%" stop-color="#16312c" />
+      </linearGradient>
+
+      <!-- Glow Filters for Pins -->
+      <!-- Sky Blue (#1EA7FF) Guest Glow -->
+      <filter id="guestPinGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="rgba(30, 167, 255, 0.75)" />
+        <feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="rgba(30, 167, 255, 0.45)" />
+      </filter>
+
+      <!-- Amber (#F5A623) Host Glow -->
+      <filter id="hostPinGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="rgba(245, 166, 35, 0.75)" />
+        <feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="rgba(245, 166, 35, 0.45)" />
+      </filter>
+    </defs>
+
+    <!-- 1. BASE BACKGROUND RECTANGLE -->
+    <rect width="1600" height="1000" fill="url(#dcBaseGrad)" />
+
+    <!-- 2. WATER SHAPES (Potomac River, Anacostia River, Tidal Basin, Washington Channel) -->
+    <g fill="url(#dcRiverGrad)" stroke="rgba(30, 167, 255, 0.05)" stroke-width="1.5">
+      <!-- Upper Potomac River & Three Sisters Islands flow -->
+      <path d="M -50 -50 
+               L 180 -50 
+               C 210 100, 240 220, 270 340 
+               C 300 460, 260 520, 360 560 
+               C 420 585, 460 620, 520 720 
+               C 560 790, 620 900, 680 1050 
+               L 420 1050 
+               C 360 900, 310 820, 260 740 
+               C 200 640, 150 560, 110 440 
+               C 70 320, 20 180, -50 80 Z" />
+
+      <!-- Tidal Basin & Washington Channel -->
+      <path d="M 520 550 
+               C 480 570, 480 620, 530 630 
+               C 570 635, 600 600, 580 560 
+               C 565 540, 535 540, 520 550 Z" />
+
+      <path d="M 550 630 
+               C 580 670, 640 760, 720 830 
+               L 750 810 
+               C 670 740, 610 650, 580 610 Z" />
+
+      <!-- Anacostia River confluence & sweep -->
+      <path d="M 720 830 
+               C 850 780, 960 730, 1080 660 
+               C 1200 590, 1340 460, 1520 300 
+               L 1550 330 
+               C 1370 490, 1220 620, 1100 690 
+               C 970 760, 860 810, 720 860 Z" />
+    </g>
+
+    <!-- 3. MUTED GREEN PARK SHAPES (Rock Creek Park, National Mall, East Potomac Park, Anacostia Park) -->
+    <g fill="url(#dcParkGrad)" stroke="rgba(52, 211, 153, 0.06)" stroke-width="1">
+      <!-- Rock Creek Park Green Corridor -->
+      <path d="M 380 -50 
+               C 410 40, 420 110, 410 180 
+               C 400 240, 380 290, 370 340 
+               C 360 380, 340 400, 310 420 
+               L 330 430 
+               C 370 410, 390 380, 400 340 
+               C 420 280, 440 230, 450 170 
+               C 460 100, 450 30, 420 -50 Z" />
+
+      <!-- East Potomac Park (Hains Point) Peninsula -->
+      <path d="M 540 640 
+               C 580 720, 630 820, 690 920 
+               C 700 935, 715 930, 720 910 
+               C 680 820, 630 730, 590 640 Z" />
+
+      <!-- Anacostia Riverfront Green Space -->
+      <path d="M 1080 640 
+               C 1200 570, 1340 440, 1500 290 
+               L 1515 310 
+               C 1350 460, 1210 590, 1090 660 Z" />
+    </g>
+
+    <!-- The National Mall Green Belt (Constitution Ave to Independence Ave) -->
+    <g fill="url(#dcMallGrad)" stroke="rgba(52, 211, 153, 0.12)" stroke-width="1.2">
+      <!-- Spans from Washington Monument / Lincoln Memorial area east toward US Capitol -->
+      <rect x="440" y="515" width="460" height="32" rx="6" />
+      <!-- Capitol Grounds Green Ellipse -->
+      <ellipse cx="940" cy="531" rx="45" ry="32" />
+    </g>
+
+    <!-- 4. SIMPLIFIED, LOW-CONTRAST STREET NETWORK (Grid + Famous Radial Avenues) -->
+    <!-- Low-contrast subtle street grid -->
+    <g stroke="rgba(255, 255, 255, 0.04)" stroke-width="1.2" stroke-linecap="round">
+      <!-- Horizontal Streets (Numbered/Lettered) -->
+      <line x1="-50" y1="90" x2="1650" y2="90" />
+      <line x1="-50" y1="170" x2="1650" y2="170" />
+      <line x1="-50" y1="250" x2="1650" y2="250" />
+      <line x1="-50" y1="330" x2="1650" y2="330" />
+      <line x1="-50" y1="410" x2="1650" y2="410" />
+      <line x1="-50" y1="490" x2="1650" y2="490" />
+      <line x1="-50" y1="570" x2="1650" y2="570" />
+      <line x1="-50" y1="650" x2="1650" y2="650" />
+      <line x1="-50" y1="730" x2="1650" y2="730" />
+      <line x1="-50" y1="810" x2="1650" y2="810" />
+      <line x1="-50" y1="890" x2="1650" y2="890" />
+
+      <!-- Vertical North-South Grid Lines -->
+      <line x1="160" y1="-50" x2="160" y2="1050" />
+      <line x1="280" y1="-50" x2="280" y2="1050" />
+      <line x1="400" y1="-50" x2="400" y2="1050" />
+      <line x1="520" y1="-50" x2="520" y2="1050" />
+      <line x1="640" y1="-50" x2="640" y2="1050" />
+      <line x1="760" y1="-50" x2="760" y2="1050" />
+      <line x1="880" y1="-50" x2="880" y2="1050" />
+      <line x1="1000" y1="-50" x2="1000" y2="1050" />
+      <line x1="1120" y1="-50" x2="1120" y2="1050" />
+      <line x1="1240" y1="-50" x2="1240" y2="1050" />
+      <line x1="1360" y1="-50" x2="1360" y2="1050" />
+      <line x1="1480" y1="-50" x2="1480" y2="1050" />
+    </g>
+
+    <!-- Key Diagonal Avenues (Slightly more defined, low contrast: rgba 255,255,255,0.08) -->
+    <g stroke="rgba(255, 255, 255, 0.08)" stroke-width="2" stroke-linecap="round">
+      <!-- Pennsylvania Ave NW/SE -->
+      <line x1="100" y1="310" x2="1500" y2="760" />
+      <!-- Massachusetts Ave NW -->
+      <line x1="150" y1="180" x2="1400" y2="800" />
+      <!-- Connecticut Ave NW -->
+      <line x1="200" y1="-50" x2="700" y2="550" />
+      <!-- New York Ave NW/NE -->
+      <line x1="300" y1="620" x2="1600" y2="210" />
+      <!-- K Street Corridor -->
+      <line x1="150" y1="410" x2="1500" y2="410" stroke-width="2.4" stroke="rgba(255, 255, 255, 0.09)" />
+      <!-- U Street / Florida Ave NW -->
+      <line x1="380" y1="160" x2="1200" y2="280" />
+      <!-- Constitution Ave -->
+      <line x1="300" y1="495" x2="1250" y2="495" />
+      <!-- Independence Ave -->
+      <line x1="300" y1="565" x2="1250" y2="565" />
+    </g>
+
+    <!-- 5. FAINT DOTTED ARCS BETWEEN PINS (With animated dash-offset) -->
+    <g fill="none" stroke="rgba(30, 167, 255, 0.32)" stroke-width="1.8" stroke-linecap="round" class="dotted-arcs-group">
+      @for (arc of arcs; track arc.d) {
+        <path [attr.d]="arc.d" class="flowing-arc-path" [style.animation-delay]="arc.delay" />
+      }
+    </g>
+
+    <!-- 6. GLOWING LOCATION PINS (9 Approximate Positions) -->
+    <g class="pins-layer">
+      @for (pin of allPins; track pin.id; let idx = $index) {
+        <g class="pin-node" 
+           [class.is-fading]="isPinHidden(idx)"
+           [attr.transform]="'translate(' + pin.x + ',' + pin.y + ')'"
+           [style.animation-delay]="pin.delay">
+          
+          <!-- Outer Ambient Pulse Ring -->
+          <circle 
+            r="16" 
+            [attr.fill]="pin.type === 'guest' ? 'rgba(30, 167, 255, 0.16)' : 'rgba(245, 166, 35, 0.16)'"
+            class="pin-pulse-ring" 
+            [style.animation-delay]="pin.delay"
+          />
+
+          <!-- Middle Halo Ring -->
+          <circle 
+            r="8" 
+            [attr.fill]="pin.type === 'guest' ? 'rgba(30, 167, 255, 0.35)' : 'rgba(245, 166, 35, 0.35)'"
+            class="pin-halo"
+          />
+
+          <!-- Solid Glowing Pin Center Point -->
+          <circle 
+            r="4.5" 
+            [attr.fill]="pin.type === 'guest' ? '#1EA7FF' : '#F5A623'"
+            stroke="#ffffff"
+            stroke-width="1.6"
+            [attr.filter]="pin.type === 'guest' ? 'url(#guestPinGlow)' : 'url(#hostPinGlow)'"
+          />
+
+          <!-- Tiny Core White Dot -->
+          <circle r="1.5" fill="#ffffff" />
+
+          <!-- Neighborhood Label: 11px, 40% opacity, non-overlapping -->
+          <text 
+            [attr.x]="pin.labelDx" 
+            [attr.y]="pin.labelDy" 
+            class="pin-label"
+            [attr.text-anchor]="pin.labelPos === 'left' ? 'end' : (pin.labelPos === 'right' ? 'start' : 'middle')">
+            {{ pin.name }}
+          </text>
+        </g>
+      }
+    </g>
+  </svg>
+
+  <!-- 7. RADIAL VIGNETTE OVERLAY (Darker and slightly blurred at center behind form card, brighter toward left/right edges) -->
+  <div class="dc-vignette-overlay"></div>
+</div>

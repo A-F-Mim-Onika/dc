@@ -1,0 +1,134 @@
+:host {
+  display: block;
+  pointer-events: none;
+}
+
+.dc-map-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  background-color: #0B1220;
+  pointer-events: none;
+  user-select: none;
+}
+
+.dc-map-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Faint Dotted Arcs with Slow Dash-Offset Animation */
+.flowing-arc-path {
+  stroke-dasharray: 4 6;
+  stroke-dashoffset: 0;
+  animation: arcFlow 24s linear infinite;
+  opacity: 0.65;
+}
+
+@keyframes arcFlow {
+  from {
+    stroke-dashoffset: 200;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Pin Nodes & Fade Transitions */
+.pin-node {
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1;
+}
+
+.pin-node.is-fading {
+  opacity: 0.08;
+  transform: scale(0.65);
+}
+
+/* Pin Staggered Slow Pulse (3.5s loop) */
+.pin-pulse-ring {
+  animation: pinPulse 3.6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes pinPulse {
+  0% {
+    r: 8px;
+    opacity: 0.8;
+  }
+  50% {
+    r: 22px;
+    opacity: 0;
+  }
+  100% {
+    r: 8px;
+    opacity: 0;
+  }
+}
+
+/* Neighborhood Labels: 11px, 40% opacity */
+.pin-label {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  fill: #f8fafc;
+  opacity: 0.40;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Radial Vignette Overlay: Darker & slightly blurred in center behind form card, brighter toward left/right edges */
+.dc-vignette-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 65% 75% at 50% 50%,
+    rgba(11, 18, 32, 0.78) 0%,
+    rgba(11, 18, 32, 0.55) 45%,
+    rgba(11, 18, 32, 0.15) 85%,
+    rgba(17, 26, 43, 0.05) 100%
+  );
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  mask-image: radial-gradient(
+    ellipse 60% 70% at 50% 50%,
+    black 40%,
+    transparent 90%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 60% 70% at 50% 50%,
+    black 40%,
+    transparent 90%
+  );
+}
+
+/* Accessibility: Respect prefers-reduced-motion by disabling animations */
+@media (prefers-reduced-motion: reduce) {
+  .flowing-arc-path {
+    animation: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+
+  .pin-pulse-ring {
+    animation: none !important;
+    opacity: 0.3 !important;
+    r: 12px !important;
+  }
+
+  .pin-node {
+    transition: none !important;
+    opacity: 1 !important;
+  }
+}
