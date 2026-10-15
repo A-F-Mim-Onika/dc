@@ -19,20 +19,20 @@
   -webkit-backdrop-filter: blur(0px);
   border-bottom: 1px solid transparent;
   transition: background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              backdrop-filter 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              -webkit-backdrop-filter 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    -webkit-backdrop-filter 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* iOS 26 Ultra Glassmorphism on Scroll */
 .navbar-wrapper.is-scrolled {
-  background: rgba(10, 15, 30, 0.68);
+  background: rgba(20, 15, 12, 0.78);
   backdrop-filter: blur(28px) saturate(190%);
   -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 245, 235, 0.08);
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5),
-              inset 0 -1px 0 0 rgba(255, 255, 255, 0.05);
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.05);
 }
 
 .navbar-container {
@@ -66,7 +66,7 @@
   border-radius: 0;
   width: auto;
   height: auto;
-  filter: drop-shadow(0 4px 14px rgba(56, 189, 248, 0.55));
+  filter: drop-shadow(0 4px 14px rgba(249, 115, 22, 0.55));
 }
 
 .brand-name {
@@ -78,7 +78,7 @@
 }
 
 .brand-name .accent {
-  color: #38bdf8;
+  color: #f97316;
 }
 
 /* Right Side Group (Pricing, Sign In, Sign Up - Rounded Border Tabs) */
@@ -91,48 +91,56 @@
 .nav-tab {
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.825rem;
+  font-size: 0.85rem;
   color: #ffffff;
-  padding: 6px 16px;
+  padding: 6px 14px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+  border: none !important;
+  outline: none !important;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
   transition: all var(--transition-fast);
 }
 
-.nav-tab:hover, .nav-tab.active {
-  color: #38bdf8;
-  border-color: rgba(56, 189, 248, 0.65);
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.28) 0%, rgba(255, 255, 255, 0.14) 100%);
-  box-shadow: 0 6px 22px rgba(56, 189, 248, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+.nav-tab:hover,
+.nav-tab.active {
+  color: #f43f5e;
+  border: none !important;
+  outline: none !important;
+  background: rgba(244, 63, 94, 0.12);
+  box-shadow: none;
   font-weight: 500;
 }
 
-/* Standout Filled CTA Button for Join as a Guest (Sky Blue Gradient) */
+/* Standout Filled CTA Button for Join Waitlist (Primary Coral Rose) */
 .btn-join-cta {
   text-decoration: none !important;
   font-weight: 600;
   font-size: 0.825rem;
-  color: #0f172a !important;
+  color: #ffffff !important;
   padding: 6px 18px;
   border-radius: var(--radius-full);
-  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
-  border: none;
-  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.4);
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+  border: none !important;
+  outline: none !important;
+  box-shadow: 0 4px 16px rgba(244, 63, 94, 0.4);
   transition: all var(--transition-fast);
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
-.btn-join-cta:hover, .btn-join-cta:focus, .btn-join-cta:active {
+.btn-join-cta:hover,
+.btn-join-cta:focus,
+.btn-join-cta:active {
   text-decoration: none !important;
-  color: #0f172a !important;
+  color: #ffffff !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(56, 189, 248, 0.6);
+  border: none !important;
+  outline: none !important;
+  box-shadow: 0 6px 22px rgba(244, 63, 94, 0.6);
   filter: brightness(1.08);
 }
 
@@ -155,7 +163,9 @@
   justify-content: center;
 }
 
-.btn-host-cta:hover, .btn-host-cta:focus, .btn-host-cta:active {
+.btn-host-cta:hover,
+.btn-host-cta:focus,
+.btn-host-cta:active {
   text-decoration: none !important;
   color: #0f172a !important;
   transform: translateY(-2px);
@@ -216,6 +226,7 @@
   .right-nav-group {
     display: none;
   }
+
   .mobile-toggle {
     display: block;
   }

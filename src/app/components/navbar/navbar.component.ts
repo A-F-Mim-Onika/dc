@@ -45,4 +45,12 @@ export class NavbarComponent {
     this.eventService.activeModal.set('guest');
     this.closeMenu();
   }
+
+  scrollTo(id: string) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    this.closeMenu();
+  }
 }

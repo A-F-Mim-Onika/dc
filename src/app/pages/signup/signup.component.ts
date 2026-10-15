@@ -53,7 +53,7 @@ export class SignupComponent implements OnInit {
     this.eventService.showToast(
       'success',
       'Account Created Successfully!',
-      `Welcome to MeetMap, ${this.name}! Registered as ${this.selectedRole() === 'guest' ? 'Member' : 'Organizer'}.`
+      `Welcome to Corasel, ${this.name}! Registered as ${this.selectedRole() === 'guest' ? 'Member' : 'Organizer'}.`
     );
     this.router.navigate(['/']);
   }

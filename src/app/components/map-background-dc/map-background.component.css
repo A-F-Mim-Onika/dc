@@ -82,7 +82,7 @@
   stroke-width: 0.8px;
 }
 
-/* Streets Hierarchies (Vector-effect ensures uniform crispness on retina and mobile) */
+/* Streets Hierarchies */
 .street-minor {
   stroke: var(--map-street-minor);
   stroke-width: 0.75px;
@@ -142,4 +142,3 @@
   text-transform: uppercase;
   pointer-events: none;
 }
-

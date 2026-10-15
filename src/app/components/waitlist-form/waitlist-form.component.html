@@ -1,0 +1,133 @@
+<section id="waitlist-form" class="waitlist-section">
+  <div class="waitlist-inner">
+    <div class="interest" [attr.data-role]="selectedIntent()">
+      @if (!submitted()) {
+      <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+        <header class="interest__header">
+          <span class="badge-tag">Get Early Access</span>
+          <h2 class="interest__header-title">Your city is full of things to celebrate.</h2>
+          <p class="interest__header-sub">
+            Come and find them . Tell us a bit about you and we'll let you know when Corasel opens in your city.
+          </p>
+        </header>
+
+        <!-- Name + Email -->
+        <div class="row">
+          <div class="field">
+            <label for="name">Full name <span class="required" aria-hidden="true">*</span></label>
+            <input id="name" type="text" formControlName="name" autocomplete="name" placeholder="Enter your full name"
+              required [class.has-error]="isInvalid('name')" />
+            @if (isInvalid('name')) {
+            <p class="error">Enter your name (at least 2 characters).</p>
+            }
+          </div>
+
+          <div class="field">
+            <label for="email">Email <span class="required" aria-hidden="true">*</span></label>
+            <input id="email" type="email" formControlName="email" autocomplete="email"
+              placeholder="Enter your email address" required [class.has-error]="isInvalid('email')" />
+            @if (isInvalid('email')) {
+            <p class="error">Enter a valid email address.</p>
+            }
+          </div>
+        </div>
+
+        <!-- City + Intent Toggle Row -->
+        <div class="row row--city-toggle">
+          <!-- City -->
+          <div class="field">
+            <label for="city">What is your desired city?</label>
+            <input id="city" type="text" formControlName="city" autocomplete="address-level2"
+              placeholder="Which city you want next?" [class.has-error]="isInvalid('city')" />
+            @if (isInvalid('city')) {
+            <p class="error">Enter the city you're interested in.</p>
+            }
+          </div>
+
+          <!-- Segmented Toggle: I would like to -->
+          <div class="field toggle-field">
+            <label class="toggle-label">I would like to: <span class="required" aria-hidden="true">*</span></label>
+            <div class="segmented-toggle">
+              <button type="button" class="toggle-btn" [class.active]="selectedIntent() === 'guest'"
+                (click)="setIntent('guest')">
+                Be a Guest
+              </button>
+              <button type="button" class="toggle-btn" [class.active]="selectedIntent() === 'host'"
+                (click)="setIntent('host')">
+                Host Events
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interests -->
+        <fieldset class="field">
+          <legend>
+            What are you into?
+            <span class="optional">Optional</span>
+          </legend>
+          <div class="chips">
+            @for (opt of interestOptions(); track opt.name) {
+            <button type="button" class="chip" [style.--chip-color]="opt.color"
+              [class.is-selected]="isSelected(opt.name)" [attr.aria-pressed]="isSelected(opt.name)"
+              (click)="toggleInterest(opt.name)">
+              <span class="chip-icon">{{ opt.icon }}</span>
+              <span>{{ opt.name }}</span>
+            </button>
+            }
+            <!-- Other button chip -->
+            <button type="button" class="chip chip--other" [class.is-selected]="showOtherInput()"
+              [attr.aria-pressed]="showOtherInput()" (click)="toggleOther()">
+              <span class="chip-icon">+</span>
+              <span>Other</span>
+            </button>
+          </div>
+
+          <!-- Expandable input field for custom category -->
+          @if (showOtherInput()) {
+          <div class="other-interest-field">
+            <input type="text" formControlName="otherInterest" placeholder="Type your category and press Enter..."
+              class="other-input" (keydown.enter)="addCustomInterest($event)" autofocus />
+            <button type="button" class="btn-add-chip" (click)="addCustomInterest($event)">Add</button>
+          </div>
+          }
+        </fieldset>
+
+        <!-- Message -->
+        <div class="field">
+          <label for="message">Anything you would like to know or suggest?</label>
+          <textarea id="message" rows="4" formControlName="message" maxlength="500"
+            placeholder="Give us your thoughts..." [class.has-error]="isInvalid('message')"></textarea>
+          <p class="counter">{{ messageLength() }}/500</p>
+        </div>
+
+        @if (errorMessage()) {
+        <p class="error error--banner" role="alert">{{ errorMessage() }}</p>
+        }
+
+        <div class="actions">
+          <button type="submit" class="submit" [disabled]="submitting()">
+            {{ submitting() ? 'Sending…' : 'Join the waitlist' }}
+          </button>
+          <button type="button" class="events-btn" (click)="viewEvents()">
+            View upcoming events
+            <span class="events-btn__arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+      </form>
+      } @else {
+      <div class="success" role="status">
+        <div class="success__icon" aria-hidden="true">✓</div>
+        <h2>You're on the list</h2>
+        <p>
+          Thanks, {{ form.controls.name.value }}. We'll email {{ form.controls.email.value }}
+          when Corasel is ready in {{ form.controls.city.value }}.
+        </p>
+        <button type="button" class="submit submit--ghost" (click)="reset()">
+          Submit another response
+        </button>
+      </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,170 +1,263 @@
-<!-- Topographic Map Background Layer -->
-<app-map-background></app-map-background>
+<main class="about-page">
+  <!-- Immersive Full-Bleed Hero Section (Matching Reference Design) -->
+  <header class="hero-immersive" id="hero">
+    <div class="hero-tint-overlay"></div>
 
-<!-- Initial Glass Progress Bar Loading Overlay (Video Inspired) -->
-@if (loadingState() < 100) {
-  <div class="intro-loader-overlay">
-    <div class="loader-glass-card glass-panel">
-      <div class="loader-top">
-        <span class="pulse-dot-active"></span>
-        <span>Initializing MeetMap Engine...</span>
-      </div>
-      <div class="progress-bar-track">
-        <div class="progress-bar-fill" [style.width.%]="loadingState()"></div>
-      </div>
-      <div class="loader-percentage">{{ loadingState() }}%</div>
+    <div class="hero-inner-container">
+      <h1 class="hero-main-title">
+        <span class="title-line line-1">Turn Shared Interests</span>
+        <span class="title-line line-2">Into Real-World</span>
+        <span class="title-line line-3">Connections.</span>
+      </h1>
+
+      <p class="hero-main-subtitle">
+        There are people out there who share your interests, passions, and curiosity—you just need a way to find them.
+        Discover events where you can meet new people, explore shared interests, and create memories together. And if
+        you have an idea worth bringing to life, create an event and give people a reason to show up.
+      </p>
     </div>
-  </div>
-}
+  </header>
 
-<!-- Main Floating Glass Container (Inspired by Reference Video) -->
-<main class="main-page-wrapper" [class.loaded]="loadingState() >= 100">
-  
-  <!-- HERO CONTAINER CARD -->
-  <section class="hero-section">
-    <div class="hero-glass-container glass-panel">
-      
-      <!-- LEFT SIDE: Clean Messaging (3 Line Heading, Description & Red Catch Phrase) -->
-      <div class="hero-left">
-        <h1 class="hero-headline">
-          <span class="gradient-text-emerald">Turn</span><br>
-          <span class="gradient-text-cyan">Shared Interests</span><br>
-          <span class="accent-amber">Into</span><br>
-          <span class="gradient-text-red">Real-World Connections.</span>
-        </h1>
-
-        <p class="hero-subtext">
-          There are people out there who share your interests, passions, and curiosity—you just need a way to find them. Discover events where you can meet new people, explore shared interests, and create memories together. And if you have an idea worth bringing to life, create an event and give people a reason to show up.
-        </p>
-
-        <div class="catchphrase-text">
-          <span class="pulse-dot-red"></span>
-          <span>Connect Beyond the Screen.</span>
+  <div class="below-hero-section">
+    <!-- Who We Are Section -->
+    <section id="who-we-are" class="who-we-are-section" #whoWeAreSection [class.is-visible]="whoWeAreVisible()">
+      <div class="who-we-are-container">
+        <div class="who-we-are-left">
+          <h2 class="who-we-are-heading">Who we are?</h2>
+        </div>
+        <div class="who-we-are-divider" aria-hidden="true"></div>
+        <div class="who-we-are-right">
+          <p class="who-we-are-text who-we-are-p1">
+            A city is more than its streets and landmarks. It's the people you share it with. Corasel exists to help you
+            get out, try something new, and make the most of where you live.
+          </p>
+          <p class="who-we-are-text who-we-are-p2">
+            We host and curate events across the city. Some are quiet and some are loud. Some are free and some are
+            ticketed. All of them are designed so you can show up on your own and feel at home.
+          </p>
         </div>
       </div>
+    </section>
 
-      <!-- RIGHT SIDE: Only Two Clean, Distinct CTA Buttons (Temporarily Commented Out) -->
-      @if (false) {
-        <div class="hero-right">
-          <div class="cta-buttons-wrapper">
+    <!-- Horizontal Scroll Section: What We Do -->
+    <section id="what-we-do" class="what-we-do-scroll-container" #whatWeDoContainer>
+      <div class="what-we-do-sticky-frame">
+        <div class="what-we-do-header">
+          <h2 class="what-we-do-heading">What we do</h2>
+        </div>
 
-            <!-- BUTTON 1: I'M A GUEST -->
-            <button class="cta-action-btn btn-guest-action glass-card" (click)="openGuestModal()" type="button">
-              <div class="btn-icon-box guest-bg">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path>
-                </svg>
+        <div class="what-we-do-viewport">
+          <div class="what-we-do-track" #whatWeDoTrack [style.transform]="trackTransform()">
+            <!-- Card 1: We bring people together -->
+            <div class="what-we-do-card card-accent-coral glass-card" [style.opacity]="cardStyles()[0].opacity"
+              [style.transform]="cardStyles()[0].transform" [style.pointer-events]="cardStyles()[0].pointerEvents"
+              style="z-index: 1;">
+              <div class="card-top-row">
+                <div class="card-icon-box">
+                  <span>🤝</span>
+                </div>
+                <span class="card-step-badge">01</span>
               </div>
-              <div class="btn-text-content">
-                <span class="btn-role-tag">FOR MEMBERS & DISCOVERERS</span>
-                <span class="btn-main-title">I'M A GUEST</span>
+              <div class="card-content-body">
+                <h3 class="card-headline">We bring people together.</h3>
+                <p class="card-description">
+                  Conversation comes easily when there's something to do, like a game, a walk, a canvas, or a shared
+                  table. You don't need an opener, only curiosity.
+                </p>
               </div>
-              <div class="btn-arrow-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </div>
-            </button>
+            </div>
 
-            <!-- BUTTON 2: I'M A HOST -->
-            <button class="cta-action-btn btn-host-action glass-card" (click)="openHostModal()" type="button">
-              <div class="btn-icon-box host-bg">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                </svg>
+            <!-- Card 2: We help you explore -->
+            <div class="what-we-do-card card-accent-orange glass-card" [style.opacity]="cardStyles()[1].opacity"
+              [style.transform]="cardStyles()[1].transform" [style.pointer-events]="cardStyles()[1].pointerEvents"
+              style="z-index: 2;">
+              <div class="card-top-row">
+                <div class="card-icon-box">
+                  <span>🧭</span>
+                </div>
+                <span class="card-step-badge">02</span>
               </div>
-              <div class="btn-text-content">
-                <span class="btn-role-tag">FOR CREATORS & VENUES</span>
-                <span class="btn-main-title">I'M A HOST</span>
+              <div class="card-content-body">
+                <h3 class="card-headline">We help you explore.</h3>
+                <p class="card-description">
+                  From hidden cafés and neighborhood galleries to monument views after dark, we show you the side of
+                  your city that guidebooks miss.
+                </p>
               </div>
-              <div class="btn-arrow-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </div>
-            </button>
+            </div>
 
+            <!-- Card 3: We create community -->
+            <div class="what-we-do-card card-accent-gold glass-card" [style.opacity]="cardStyles()[2].opacity"
+              [style.transform]="cardStyles()[2].transform" [style.pointer-events]="cardStyles()[2].pointerEvents"
+              style="z-index: 3;">
+              <div class="card-top-row">
+                <div class="card-icon-box">
+                  <span>🌱</span>
+                </div>
+                <span class="card-step-badge">03</span>
+              </div>
+              <div class="card-content-body">
+                <h3 class="card-headline">We create community.</h3>
+                <p class="card-description">
+                  The goal isn't a one-off night out. It's a circle of familiar faces, regular rituals, and friendships
+                  that carry on after the event ends.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      }
-
-    </div>
-  </section>
-
-  <!-- FOOTER COMPONENT -->
-  <app-footer></app-footer>
-
-</main>
-
-<!-- Interactive Map Pin Detail Modal / Card (Centered & Longer Screen Layout) -->
-@if (eventService.activeMapPin(); as activeEvt) {
-  <div class="pin-detail-backdrop" (click)="eventService.activeMapPin.set(null)">
-    <div class="pin-detail-card glass-panel" (click)="$event.stopPropagation()">
-      <button class="close-btn" (click)="eventService.activeMapPin.set(null)">✕</button>
-      
-      <!-- Longer Hero Image Banner -->
-      <div class="card-thumb">
-        <img [src]="activeEvt.image" [alt]="activeEvt.title" />
-        <div class="thumb-overlay"></div>
-        <span class="badge-cat">{{ activeEvt.category }}</span>
-        <span class="badge-spots">🔥 {{ activeEvt.spotsLeft }} Spots Left</span>
       </div>
+    </section>
 
-      <!-- Rich Card Info Section -->
-      <div class="card-info">
-        <h3>{{ activeEvt.title }}</h3>
-        
-        <div class="event-meta-row">
-          <span class="meta-item">📍 {{ activeEvt.location }}</span>
-          <span class="meta-item">📅 {{ activeEvt.date }}</span>
-          <span class="meta-item">⏰ {{ activeEvt.time }}</span>
+    <!-- What We Believe: Full-bleed section with rgb(220, 210, 202) background -->
+    <section id="beliefs" class="values-wrapper values-section">
+      <div class="values-inner">
+        <div class="section-title-wrap">
+          <h2>What we believe</h2>
         </div>
 
-        <p class="event-desc-snippet">
-          Join fellow enthusiasts for an immersive real-world gathering. Connect with members, explore shared interests, and create memories together.
-        </p>
+        <div class="values-grid values-grid-three">
+          <!-- Value 1: Everyone belongs -->
+          <div class="value-card glass-card">
+            <div class="card-icon-box cyan-glow">
+              <span>✨</span>
+            </div>
+            <h3>Everyone belongs.</h3>
+            <p>There’s no right way to show up. You might be new to the city, a longtime local, out on your own, or
+              surrounded by friends. You might be quiet, curious, outgoing, or somewhere in between. Wherever you are in
+              life, there’s a place for you here.</p>
+          </div>
 
-        <!-- Host Details Row -->
-        <div class="host-row">
-          <img [src]="activeEvt.hostAvatar" class="avatar" [alt]="activeEvt.hostName" />
-          <div class="host-meta">
-            <strong>{{ activeEvt.hostName }}</strong>
-            <span class="role">⭐ {{ activeEvt.hostRole }}</span>
+          <!-- Value 2: Real places beat screens -->
+          <div class="value-card glass-card">
+            <div class="card-icon-box amber-glow">
+              <span>☕</span>
+            </div>
+            <h3>Real places beat screens.</h3>
+            <p>The best memories are created in real neighborhoods, with real people, over good food, shared stories,
+              and genuine conversations. There’s always something beyond putting your phone down, stepping outside, and
+              experiencing a place together. The moments worth capturing on a screen are usually the ones that happen
+              off the screen.</p>
+          </div>
+
+          <!-- Value 3: Good hosting makes the difference -->
+          <div class="value-card glass-card">
+            <div class="card-icon-box coral-glow">
+              <span>⭐</span>
+            </div>
+            <h3>Good hosting makes the difference.</h3>
+            <p>Walking into a new space is easier when there is a proper welcome and genuine care. We strive to create
+              the warmest, most welcoming setting and make sure everyone has a chance to feel included. Because
+              sometimes, all it takes is one friendly face to make a new place feel a little more like home.</p>
+          </div>
+
+          <!-- Value 4: Safe and inclusive by design -->
+          <div class="value-card glass-card">
+            <div class="card-icon-box emerald-glow">
+              <span>🛡️</span>
+            </div>
+            <h3>Safe and inclusive by design.</h3>
+            <p>Every connection starts with feeling comfortable and cared for. That means choosing welcoming spaces,
+              setting clear expectations, and creating a culture where people look out for one another. Everyone should
+              feel safe enough to be themselves and enjoy being part of the moment.</p>
+          </div>
+
+          <!-- Value 5: Built for you, with you -->
+          <div class="value-card glass-card full-width-card">
+            <div class="card-icon-box violet-glow">
+              <span>💬</span>
+            </div>
+            <h3>Built for you, with you.</h3>
+            <p>The best communities grow by learning from the people who are part of them. After every event, we want to
+              know what you enjoyed, what could be better, and what you’d love to experience next. Your feedback helps
+              us shape what comes next, because you’re not just part of the community—you’re part of what makes it
+              better.</p>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Footer Pricing & Action -->
-        <div class="card-footer">
-          <div class="price-box">
-            <span class="price-label">Ticket Price</span>
-            <span class="price">{{ activeEvt.price }}</span>
+    <!-- How It Works: Section with #000 (black) background -->
+    <section id="how-it-works" class="how-it-works-wrapper">
+      <div class="how-it-works-inner">
+        <div class="how-it-works-header">
+          <h2>How it works</h2>
+        </div>
+        <div class="steps-row">
+          <div class="step-item">
+            <div class="step-num">Step 01</div>
+            <h4>Discover</h4>
+            <p>Discover events.</p>
           </div>
-          <button class="btn-primary btn-md" (click)="eventService.notifyInterest(activeEvt)">
-            <span>RSVP Interest</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
+
+          <div class="step-connector"></div>
+
+          <div class="step-item">
+            <div class="step-num">Step 02</div>
+            <h4>RSVP</h4>
+            <p>RSVP in seconds.</p>
+          </div>
+
+          <div class="step-connector"></div>
+
+          <div class="step-item">
+            <div class="step-num">Step 03</div>
+            <h4>Show up</h4>
+            <p>Show up and let your host take care of the rest.</p>
+          </div>
+
+          <div class="step-connector"></div>
+
+          <div class="step-item">
+            <div class="step-num">Step 04</div>
+            <h4>Keep going</h4>
+            <p>Keep coming back, bring friends, and help shape what's next.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Where We're Starting Section (Dedicated Launch City Section) -->
+    <section id="where-we-are-starting" class="where-starting-section">
+      <div class="where-starting-inner">
+        <h2 class="where-starting-title">Where we're starting</h2>
+        <div class="card-accent-pill" style="color: #f97316 !important;">📍 <span style="color: #f97316 !important;">Washington, D.C.</span></div>
+        <div class="where-starting-desc-wrap">
+          <p class="where-starting-desc">
+            We’re starting right here in Washington, D.C.—bringing people together across the neighborhoods, restaurants, rooftops, parks, and little corners that make the city special. This fall, we’re creating our first season of events and seeing where the connections take us.
+          </p>
+          <p class="where-starting-desc">
+            D.C. is just the beginning. We want Corasel to grow wherever people are looking for good company, new places to discover, and something worth stepping out for. Tell us where you’d like to see us next, and maybe we’ll see you there.
+          </p>
+        </div>
+        <button type="button" class="btn-text-link where-starting-cta" style="color: #f97316 !important; align-self: center !important;" (click)="scrollToForm('guest')">
+          <span style="color: #f97316 !important;">Join the waitlist</span> <span style="color: #f97316 !important; font-size: 1.25em;">↓</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Early Access / Waitlist Form Section (Modularized Component) -->
+    <app-waitlist-form #waitlistForm></app-waitlist-form>
+
+    <div class="about-container">
+      <!-- Host with Us Callout -->
+      <div class="host-single-row">
+        <div class="info-card glass-card host-single-card">
+          <div class="card-accent-pill amber">⭐ Become a Host</div>
+          <h3>Host with us</h3>
+          <p>
+            Love bringing people together? Whether you run a book club, teach a craft, own a venue, or just throw a
+            great party, we'd love to work with you. Hosts and local partners are at the heart of Corasel. Tap Become a
+            Host to get started.
+          </p>
+          <button type="button" class="btn-text-link amber" (click)="scrollToForm('host')">
+            Become a Host <span>↑</span>
           </button>
         </div>
       </div>
     </div>
-  </div>
-}
 
-<!-- INTERACTIVE MODAL OVERLAY FOR GUEST FORM & HOST FORM -->
-@if (activeModal(); as modalType) {
-  <div class="modal-backdrop" (click)="closeModal()">
-    <div class="modal-dialog glass-panel" (click)="$event.stopPropagation()">
-      <button class="modal-close-btn" (click)="closeModal()">✕</button>
-      
-      @if (modalType === 'guest') {
-        <app-guest-form></app-guest-form>
-      } @else if (modalType === 'host') {
-        <app-host-form></app-host-form>
-      }
-    </div>
+    <!-- Page Footer -->
+    <app-footer></app-footer>
   </div>
-}
+</main>

@@ -22,7 +22,7 @@ export class PricingComponent {
     this.eventService.showToast(
       'info',
       'Enterprise Support',
-      'An enterprise event specialist will reach out to you at sales@meetmap.com.'
+      'An enterprise event specialist will reach out to you at sales@corasel.com.'
     );
   }
 }

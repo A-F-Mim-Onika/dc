@@ -42,7 +42,7 @@ export class GuestFormComponent {
     this.submitted.set(true);
     this.eventService.showToast(
       'success',
-      'Welcome to MeetMap!',
+      'Welcome to Corasel!',
       `Guest Discovery Pass generated for ${this.name}. Check ${this.email} for initial event drops.`
     );
   }
